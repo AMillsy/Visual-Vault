@@ -1,3 +1,3 @@
-const upload = require(`./s3connection`);
+const { uploadProjects, uploadUsers, s3 } = require(`./s3connection`);
 
-module.exports = upload;
+module.exports = { uploadProjects, uploadUsers, s3 };
