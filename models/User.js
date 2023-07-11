@@ -35,6 +35,13 @@ User.init(
         len: [8],
       },
     },
+    github_username: {
+      type: DataTypes.STRING,
+      unique: true, 
+    },
+    profile_image: {
+      type: DataTypes.STRING
+    }
   },
   {
     hooks: {

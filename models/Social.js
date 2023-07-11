@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Project extends Model {}
+class Social extends Model {}
 
-Project.init(
+Social.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,17 +11,15 @@ Project.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    social_name: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    description: {
+    }
+    external_link: {
       type: DataTypes.STRING,
-    },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
+      validate: {
+        isUrl: true
+      }
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -29,18 +27,6 @@ Project.init(
         model: 'user',
         key: 'id',
       },
-    },
-    deployed_link: {
-      type: DataTypes.STRING,
-      validate: {
-        isUrl: true
-      }
-    },
-    repo_link: {
-      type: DataTypes.STRING,
-      validate: {
-        isUrl: true
-      }
     },
   },
   {
@@ -52,4 +38,4 @@ Project.init(
   }
 );
 
-module.exports = Project;
+module.exports = Social;
