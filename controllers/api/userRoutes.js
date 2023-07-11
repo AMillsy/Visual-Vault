@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const upload = require('../../config');
 const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
@@ -39,10 +40,9 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
-
   } catch (err) {
     res.status(400).json(err);
   }
@@ -59,3 +59,7 @@ router.post('/logout', (req, res) => {
 });
 
 module.exports = router;
+
+router.post(`/picture`, upload.single(`photo`), (req, res, next) => {
+  res.json(req.file);
+});
