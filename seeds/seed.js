@@ -3,6 +3,8 @@ const { User, Project } = require('../models');
 
 const userData = require('./userData.json');
 const projectData = require('./projectData.json');
+const reactionData = require('./reactionData.json');
+const socialData = require('./socialData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -17,6 +19,13 @@ const seedDatabase = async () => {
       ...project,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
+  }
+
+  for (const reaction of reactionData) {
+    await Reaction.create({
+      ...reaction,
+      user_id: 
+    })
   }
 
   process.exit(0);
