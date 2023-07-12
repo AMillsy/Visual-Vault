@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const upload = require('../../config');
+const { uploadProjects, uploadUsers, s3 } = require('../../config');
 const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
@@ -58,8 +58,8 @@ router.post('/logout', (req, res) => {
   }
 });
 
-module.exports = router;
-
-router.post(`/picture`, upload.single(`photo`), (req, res, next) => {
+router.post(`/picture`, uploadUsers.single(`photo`), (req, res, next) => {
   res.json(req.file);
 });
+
+module.exports = router;
