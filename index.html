@@ -15,11 +15,35 @@
       color: white;
       padding: 20px;
       text-align: center;
+      position: relative;
     }
     
-    h1 {
-      margin: 0;
-      font-size: 32px;
+    .logo {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+    
+    .navigation {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    
+    .navigation button {
+      margin-left: 10px;
+      background-color: #ffffff;
+      color: #70cc00;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .navigation button:hover {
+      background-color: #0088cc;
+      color: white;
     }
     
     main {
@@ -32,33 +56,31 @@
       padding: 10px;
       text-align: center;
     }
-    
-    .logo {
-      max-width: 200px;
-      margin: 0 auto;
-    }
   </style>
 </head>
 <body>
   <header>
-    <img class="logo" src="/Logop2.png" alt="Visual Vault Logo">
+    <img class="logo" src="Logop2.png" alt="Visual Vault Logo">
+    <div class="navigation">
+      <button onclick="scrollToSection('about')">About Us</button>
+      <button onclick="scrollToSection('services')">Services</button>
+      <button onclick="scrollToSection('contact')">Contact Us</button>
+      <button onclick="window.location.href='login.html'">Login</button>
+    </div>
   </header>
   
   <main>
-    <h2>Welcome to Visual Vault!</h2>
+    <h2 id="about">Welcome to Visual Vault!</h2>
     <p>Discover the power of visual content with Visual Vault.</p>
     
-    <h3>About Us</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in enim nec risus consequat eleifend.</p>
-    
-    <h3>Services</h3>
+    <h3 id="services">Services</h3>
     <ul>
       <li>Graphic Design</li>
       <li>Web Development</li>
       <li>UI/UX Design</li>
     </ul>
     
-    <h3>Contact Us</h3>
+    <h3 id="contact">Contact Us</h3>
     <p>Email: info@visualvault.com</p>
     <p>Phone: 123-456-7890</p>
   </main>
@@ -66,5 +88,12 @@
   <footer>
     &copy; 2023 Visual Vault. All rights reserved.
   </footer>
+  
+  <script>
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
 </body>
 </html>
