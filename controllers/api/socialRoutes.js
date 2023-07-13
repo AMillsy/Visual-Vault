@@ -4,6 +4,9 @@ const { Social } = require('../../models');
 //ID WILL BE THE USERS ID
 router.post('/:id', async (req, res) => {
 	const { social_type, social_other, external_link } = req.body;
+
+	if (!social_type || !external_link)
+		return res.status(400).json({ message: `No external link added` });
 	try {
 		const socialData = await Social.create({
 			social_type: social_type,
