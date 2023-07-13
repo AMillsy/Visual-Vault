@@ -5,12 +5,6 @@ class Social extends Model {}
 
 Social.init(
 	{
-		id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			autoIncrement: true,
-		},
 		social_type: {
 			// for choosing twitter, fb, linkedin, or other
 			type: DataTypes.STRING,
@@ -36,8 +30,6 @@ Social.init(
 	},
 	{
 		sequelize,
-		timestamps: false,
-		freezeTableName: true,
 		underscored: true,
 		modelName: 'social',
 	}
