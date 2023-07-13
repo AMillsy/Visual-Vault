@@ -1,6 +1,15 @@
-<article>
+<article class="text-center">
+
 	<!-- prettier ignore -->
 	SOCIAL MEDIA TAGS
+
+	
+  <h2>{{project.title}}</h2>
+  <p>Project Link: <a href="{{project.link}}">{{project.link}}</a></p>
+	<p>{{project.description}}</p>
+	<p>Created by {{user.name}} on {{format_date date_created}}</p>
+  
+	
 	<!-- prettier ignore -->
 	TITLE OF PROJECT
 	<!-- prettier ignore -->
@@ -9,3 +18,15 @@
 	PROJECT DESCRIPTION
 
 </article>
+
+
+
+  <div class="social-media-tags">
+    <h3>Social Media Tags:</h3>
+      <ul>
+        <li><a href="https://twitter.com/intent/tweet?url={{project.url}}&text=Check%20out%20this%20awesome%20project%21">Tweet</a></li>
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{project.url}}">Share on Facebook</a></li>
+        <li><a href="https://www.linkedin.com/shareArticle?url={{project.url}}&title={{project.title}}">Share on LinkedIn</a></li>
+      </ul>
+  </div>
+    

@@ -13,6 +13,7 @@
           <h1>Site name</h1>
             {{#if loggedIn}}
             <p>Welcome, {{username}}! <a href="/profile">Profile</a></p>
+            <button class="no-button" id="logout">logout</button>
             {{else}}
             <p><a href="/login">Login</a></p>
             {{/if}}
