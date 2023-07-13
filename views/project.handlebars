@@ -1,10 +1,18 @@
 <article class="text-center">
+{{#extend "layout"}}
+    {{!-- Setting the page title --}}
+    {{#content "pageTitle"}}Login{{/content}}
+    {{!-- Including the login partial --}}
+    {{#content "body"}}
+        {{> login}}
+    {{/content}}
+{{/extend}}
 
 	<!-- prettier ignore -->
 	SOCIAL MEDIA TAGS
 
 	
-  <h2>{{project.title}}</h2>
+  <h2>{{project.name}}</h2>
   <p>Project Link: <a href="{{project.link}}">{{project.link}}</a></p>
 	<p>{{project.description}}</p>
 	<p>Created by {{user.name}} on {{format_date date_created}}</p>
@@ -29,4 +37,28 @@
         <li><a href="https://www.linkedin.com/shareArticle?url={{project.url}}&title={{project.title}}">Share on LinkedIn</a></li>
       </ul>
   </div>
-    
+
+<head>
+    <title>User Project Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>User Project Page</h1>
+    </header>
+
+    <div class="content">
+        <div class="project">
+            <h2 id="project-name">Project Name</h2>
+            <p id="product-description">Product Description</p>
+            <p id="user-name">User Name</p>
+            <p id="date-created">Date Created</p>
+            <a id="project-link" href="#">Project Link</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Footer content here</p>
+    </footer>
+</body>
+</html>
