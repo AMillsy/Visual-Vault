@@ -7,28 +7,19 @@ const reactionData = require('./reactionData.json');
 const socialData = require('./socialData.json');
 
 const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
+	await sequelize.sync({ force: true });
 
-  const users = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
+	await User.bulkCreate(userData, {
+		individualHooks: true,
+	});
 
-  for (const project of projectData) {
-    await Project.create({
-      ...project,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });
-  }
+	await User.bulkCreate(projectData);
 
-  for (const reaction of reactionData) {
-    await Reaction.create({
-      ...reaction,
-      user_id: 
-    })
-  }
+	await User.bulkCreate(reactionData);
 
-  process.exit(0);
+	await User.bulkCreate(socialData);
+
+	process.exit(0);
 };
 
 seedDatabase();

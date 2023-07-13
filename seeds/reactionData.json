@@ -1,0 +1,32 @@
+[
+	{
+		"type": "thumbs-up",
+		"user_id": "1",
+		"project_id": "1"
+	},
+	{
+		"type": "thumbs-up",
+		"user_id": "1",
+		"project_id": "2"
+	},
+	{
+		"type": "thumbs-up",
+		"user_id": "1",
+		"project_id": "3"
+	},
+	{
+		"type": "thumbs-up",
+		"user_id": "2",
+		"project_id": "1"
+	},
+	{
+		"type": "thumbs-up",
+		"user_id": "2",
+		"project_id": "2"
+	},
+	{
+		"type": "thumbs-up",
+		"user_id": "3",
+		"project_id": "1"
+	}
+]
