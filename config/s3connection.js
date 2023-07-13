@@ -19,8 +19,20 @@ const uploadUsers = multer({
     key: function (req, file, cb) {
       cb(null, `users/${Date.now().toString()}`);
     },
+    fileFilter: function (req, file, callback) {
+      var ext = path.extname(file.originalname);
+      if (
+        ext !== '.png' &&
+        ext !== '.jpg' &&
+        ext !== '.gif' &&
+        ext !== '.jpeg'
+      ) {
+        return callback(new Error('Only images are allowed'));
+      }
+      callback(null, true);
+    },
   }),
-  limits: { fileSize: 10000000 }, //In bytes: Limited to 1mb
+  limits: { fileSize: 50000000 }, //In bytes: Limited to 5mb
 });
 
 const uploadProjects = multer({
@@ -33,6 +45,18 @@ const uploadProjects = multer({
     },
     key: function (req, file, cb) {
       cb(null, `projects/${Date.now().toString()}`);
+    },
+    fileFilter: function (req, file, callback) {
+      var ext = path.extname(file.originalname);
+      if (
+        ext !== '.png' &&
+        ext !== '.jpg' &&
+        ext !== '.gif' &&
+        ext !== '.jpeg'
+      ) {
+        return callback(new Error('Only images are allowed'));
+      }
+      callback(null, true);
     },
   }),
   limits: { fileSize: 50000000 }, //In bytes: Limited to 5mb
