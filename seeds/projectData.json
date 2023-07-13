@@ -1,6 +1,7 @@
 [
 	{
-		"name": "Music Near Me",
+		"id": 1,
+		"project_name": "Music Near Me",
 		"description": "A mobile app that will send you notifications whenever a concert is playing in your area.",
 		"date_created": "",
 		"user_id": 1,
@@ -8,7 +9,8 @@
 		"repo_link": ""
 	},
 	{
-		"name": "The Ultimate Tech Quiz",
+		"id": 2,
+		"project_name": "The Ultimate Tech Quiz",
 		"description": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
 		"date_created": "",
 		"user_id": 2,
@@ -16,7 +18,8 @@
 		"repo_link": ""
 	},
 	{
-		"name": "Roll 'Em Up",
+		"id": 3,
+		"project_name": "Roll Em Up",
 		"description": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
 		"date_created": "",
 		"user_id": 3,
@@ -24,7 +27,8 @@
 		"repo_link": ""
 	},
 	{
-		"name": "This and That",
+		"id": 4,
+		"project_name": "This and That",
 		"description": "A nonsense for everything and nothing",
 		"date_created": "",
 		"user_id": 3,
