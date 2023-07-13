@@ -44,7 +44,7 @@ const uploadProjects = multer({
 			cb(null, { fieldName: file.fieldname });
 		},
 		key: function (req, file, cb) {
-			cb(null, `projects/${Date.now().toString()}`);
+			cb(null, `projects/${file.originalname}_${Date.now().toString()}`);
 		},
 		fileFilter: function (req, file, callback) {
 			var ext = path.extname(file.originalname);

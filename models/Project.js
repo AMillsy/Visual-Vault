@@ -5,13 +5,7 @@ class Project extends Model {}
 
 Project.init(
 	{
-		id: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			primaryKey: true,
-			autoIncrement: true,
-		},
-		name: {
+		project_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
