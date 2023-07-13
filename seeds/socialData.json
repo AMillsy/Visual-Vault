@@ -1,0 +1,43 @@
+[
+	{
+		"social_type": "twitter",
+		"external_link": "twitter.com",
+		"user_id": "1"
+	},
+	{
+		"social_type": "facebook",
+		"external_link": "facebook.com",
+		"user_id": "1"
+	},
+	{
+		"social_type": "linkedin",
+		"external_link": "linkedin.com",
+		"user_id": "2"
+	},
+	{
+		"social_type": "twitter",
+		"external_link": "twitter.com",
+		"user_id": "2"
+	},
+	{
+		"social_type": "other",
+		"social_other": "linktree",
+		"external_link": "linktr.ee",
+		"user_id": "3"
+	},
+	{
+		"social_type": "linkedin",
+		"external_link": "linkedin.com",
+		"user_id": "3"
+	},
+	{
+		"social_type": "twitter",
+		"external_link": "twitter.com",
+		"user_id": "3"
+	},
+	{
+		"social_type": "facebook",
+		"external_link": "facebook.com",
+		"user_id": "3"
+	}
+]

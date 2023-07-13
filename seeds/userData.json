@@ -1,17 +1,23 @@
 [
-  {
-    "name": "Sal",
-    "email": "sal@hotmail.com",
-    "password": "password12345"
-  },
-  {
-    "name": "Lernantino",
-    "email": "lernantino@gmail.com",
-    "password": "password12345"
-  },
-  {
-    "name": "Amiko",
-    "email": "amiko2k20@aol.com",
-    "password": "password12345"
-  }
+	{
+		"name": "Sal",
+		"email": "sal@hotmail.com",
+		"password": "password12345",
+		"github_username": "salthepal",
+		"profile_image": "https://picsum.photos/200"
+	},
+	{
+		"name": "Lernantino",
+		"email": "lernantino@gmail.com",
+		"password": "password12345",
+		"github_username": "tomjschuster",
+		"profile_image": "https://picsum.photos/200"
+	},
+	{
+		"name": "Amiko",
+		"email": "amiko2k20@aol.com",
+		"password": "password12345",
+		"github_username": "drwpow",
+		"profile_image": "https://picsum.photos/200"
+	}
 ]

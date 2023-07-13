@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Project extends Model {}
+class Reaction extends Model {}
 
-Project.init(
+Reaction.init(
 	{
 		id: {
 			type: DataTypes.INTEGER,
@@ -11,12 +11,9 @@ Project.init(
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		name: {
+		type: {
 			type: DataTypes.STRING,
 			allowNull: false,
-		},
-		description: {
-			type: DataTypes.STRING,
 		},
 		date_created: {
 			type: DataTypes.DATE,
@@ -30,16 +27,11 @@ Project.init(
 				key: 'id',
 			},
 		},
-		deployed_link: {
-			type: DataTypes.STRING,
-			validate: {
-				isUrl: true,
-			},
-		},
-		repo_link: {
-			type: DataTypes.STRING,
-			validate: {
-				isUrl: true,
+		project_id: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: 'project',
+				key: 'id',
 			},
 		},
 	},
@@ -52,4 +44,4 @@ Project.init(
 	}
 );
 
-module.exports = Project;
+module.exports = Reaction;
