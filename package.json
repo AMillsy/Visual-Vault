@@ -15,6 +15,7 @@
 	"dependencies": {
 		"aws-sdk": "^2.1414.0",
 		"bcrypt": "^5.0.0",
+		"bucket": "^0.0.1",
 		"connect-session-sequelize": "^7.0.4",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
@@ -24,7 +25,8 @@
 		"multer-s3": "^2.10.0",
 		"mysql2": "^2.2.5",
 		"sequelize": "^6.3.5",
-		"sharp": "^0.32.2"
+		"sharp": "^0.32.2",
+		"stack": "^0.1.0"
 	},
 	"devDependencies": {
 		"eslint": "^7.12.1",
