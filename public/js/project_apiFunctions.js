@@ -96,3 +96,23 @@ async function createUser(e) {
 	}
 	return; //Error with uploading social links try again
 }
+
+async function updateSocial(e) {
+	e.preventDefault();
+
+	//GET THE ELEMENTS SOCIAL ID
+	const id = 4;
+
+	const external_link = `newwebsite.com`;
+	const response = await fetch(`/api/socials/${id}`, {
+		method: `PUT`,
+		body: JSON.stringify({ external_link }),
+		headers: { 'Content-Type': 'application/json' },
+	});
+
+	if (response.ok) {
+		return; // Message, We have updated the link and then you dynamically put the link in or refresh the page
+	} else {
+		return; // Error message from the response
+	}
+}

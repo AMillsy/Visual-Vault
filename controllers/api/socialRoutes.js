@@ -32,4 +32,26 @@ router.delete(`/:id`, async (req, res) => {
 		res.status(400).json(error);
 	}
 });
+
+//ID IS THE SOCIAL ID
+//Be able to update the link
+router.put('/:id', async (req, res) => {
+	const { external_link } = req.body;
+	if (!external_link)
+		return res.status(400).json({ message: "Link hasn't been provided" });
+	try {
+		const updateSocial = await Social.update(
+			{ external_link: external_link },
+			{
+				where: {
+					id: req.params.id,
+				},
+			}
+		);
+
+		res.status(200).json(updateSocial);
+	} catch (error) {
+		res.status(400).json(error);
+	}
+});
 module.exports = router;
