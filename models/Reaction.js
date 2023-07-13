@@ -27,6 +27,7 @@ Reaction.init(
 	{
 		sequelize,
 		underscored: true,
+		freezeTableName: true,
 		modelName: 'reaction',
 	}
 );

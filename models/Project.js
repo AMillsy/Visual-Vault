@@ -35,6 +35,7 @@ Project.init(
 	{
 		sequelize,
 		underscored: true,
+		freezeTableName: true,
 		modelName: 'project',
 	}
 );

@@ -18,4 +18,18 @@ router.post('/:id', async (req, res) => {
 	}
 });
 
+//ID IS THE SOCIAL LINKS ID IN THE DATABASE, THIS WILL BE ON THE ELEMENT
+
+//IF THE SOCIAL HAS BEEN DELETE, IT WILL RESPONSED WITH "1"
+router.delete(`/:id`, async (req, res) => {
+	try {
+		const deleteSocial = await Social.destroy({
+			where: { id: req.params.id },
+		});
+
+		res.status(200).json(deleteSocial);
+	} catch (error) {
+		res.status(400).json(error);
+	}
+});
 module.exports = router;
