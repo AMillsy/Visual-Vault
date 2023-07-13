@@ -2,7 +2,7 @@ const User = require('./User');
 const Project = require('./Project');
 const Reaction = require('./Reaction');
 const Social = require('./Social');
-
+const Project_Image = require('./Project-Image');
 User.hasMany(Project, {
 	foreignKey: 'user_id',
 	onDelete: 'CASCADE',
@@ -39,4 +39,12 @@ Social.belongsTo(User, {
 	foreignKey: 'user_id',
 });
 
-module.exports = { User, Project, Reaction, Social };
+Project.hasMany(Project_Image, {
+	foreignKey: `project_id`,
+	onDelete: `CASCADE`,
+});
+
+Project_Image.belongsTo(Project, {
+	foreignKey: `project_id`,
+});
+module.exports = { User, Project, Reaction, Social, Project_Image };

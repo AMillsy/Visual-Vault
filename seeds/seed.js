@@ -1,5 +1,5 @@
 const sequelize = require('../config/connection');
-const { User, Project } = require('../models');
+const { User, Project, Reaction, Social } = require('../models');
 
 const userData = require('./userData.json');
 const projectData = require('./projectData.json');
@@ -13,11 +13,11 @@ const seedDatabase = async () => {
 		individualHooks: true,
 	});
 
-	await User.bulkCreate(projectData);
+	await Project.bulkCreate(projectData);
 
-	await User.bulkCreate(reactionData);
+	await Reaction.bulkCreate(reactionData);
 
-	await User.bulkCreate(socialData);
+	await Social.bulkCreate(socialData);
 
 	process.exit(0);
 };
