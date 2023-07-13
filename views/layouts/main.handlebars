@@ -10,18 +10,34 @@
 
   <body>
       <header>
+          <h1>Site name</h1>
+            {{#if loggedIn}}
+            <p>Welcome, {{username}}! <a href="/profile">Profile</a></p>
+            {{else}}
+            <p><a href="/login">Login</a></p>
+            {{/if}}
+
         <nav>
           <ul>
-            <li><a href="REF TO EACH SECTION"></a></li>
+            <li><a href="/Homepage">Home</a></li>
+            <li><a href="/Recent">Recent Projects</a></li>
+            <li>
+                <form action="/search" method="GET">
+                    <input type="text" name="search" placeholder="Search for a user or project">
+                    <button type="submit">Search</button>
+                </form>
+            </li>
           </ul>
         </nav>
+        
       </header>
       <main class='container container-fluid mt-5'>
         <!-- Render the sub layout -->
         {{{body}}}
       </main>
       <footer>
-        <p>Footer of the page </p>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="https://github.com/AMillsy/Matrix-project">GitHub</a></li>
       </footer>
     </div>
     <!-- Render script for logged in users only -->

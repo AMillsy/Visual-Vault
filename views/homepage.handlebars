@@ -1,7 +1,17 @@
 <!-- Loop over each object in the projects array -->
-<article>
-	Render projects and extra things
+<article class="Content">
+  <h2>Featured User Projects</h2>
+    {{#each projects}}
+      <div class="project">
+        <h3>{{title}}</h3>
+        <p>{{description}}</p>
+      </div>
+    {{/each}}
 </article>
+
 <aside>
 	Maybe have a side bar that go can go to extra options
 </aside>
+
+
+    
