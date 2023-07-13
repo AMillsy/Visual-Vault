@@ -61,7 +61,9 @@ router.post('/logout', (req, res) => {
 });
 
 router.post(`/picture`, uploadUsers.single(`photo`), (req, res, next) => {
-	res.json(req.file);
+	const imageData = req.file.location;
+
+	res.status(200).json(imageData);
 });
 
 module.exports = router;

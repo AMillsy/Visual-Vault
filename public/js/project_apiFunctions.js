@@ -1,3 +1,5 @@
+const { response } = require('express');
+
 async function addProject(e) {
 	//e.preventDefault();
 
@@ -56,4 +58,41 @@ async function deleteProject(e) {
 		//Reload the page to show the user that the project has been deleted
 		window.location.reload();
 	}
+}
+
+async function createUser(e) {
+	e.preventDefault();
+
+	//CHECK IF THEY FILLED IN ALL THE FIELDS
+
+	//Get all the users data
+
+	const userResponse = await fetch(`/api/users/`, {
+		method: `POST`,
+		body: JSON.stringify({
+			/**USER CONTENT */
+		}),
+		headers: { 'Content-Type': 'application/json' },
+	});
+
+	if (!userResponse.ok) return; // ERROR MESSAGE ON SCREEN
+
+	//Social type, list selector
+	//Social other, if they select other, they can write the socials name
+	//external_link, the link to there page
+
+	const id = 2; //GET THE ID FROM THE USER RESPONSE
+
+	const socials = {
+		social_type: `Instagram`,
+		social_other: ``,
+		external_link: `https://www.instagram.com/`,
+	};
+
+	const socialResponse = await fetch(`/api/socials/${id}`);
+
+	if (socialResponse.ok) {
+		return; // reload the page or say something
+	}
+	return; //Error with uploading social links try again
 }
