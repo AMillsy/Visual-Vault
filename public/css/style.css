@@ -3,6 +3,24 @@ header,
 	border-bottom: 1px solid #ccc;
 }
 
+.feature_projects {
+	border-top: 5px black solid;
+	display: flex;
+	flex-direction: column;
+	background-color: #301934;
+}
+.feature_text {
+	padding: 10px;
+	text-align: center;
+	color: white;
+}
+.project {
+	height: 100px;
+	margin: 5px;
+	color: white;
+	background-color: #121212;
+}
+
 .no-button {
 	background: none;
 	border: none;

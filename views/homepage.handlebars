@@ -1,35 +1,33 @@
-<!-- Loop over each object in the projects array -->
-<article class='introduction'>
-	<h2 id='about' style='font-size: 75px; color: lightgray'>
-		Designed with developers in mind
-	</h2>
-	<p style='font-size: 50px; color: lightgray'>
-		Unleashed for enhanced productivity.
-		<br />
-		Provide feedback on repositories created by others.
-		<br />
-		Step into the platform that captures the hearts of developers worldwide.
-		<br />
-		Welcome to Visual Vault!
-	</p>
+<!-- If not logged in, then show the introduction article -->
+{{#unless logged_in}}
+	<article class='introduction'>
+		<h2 id='about' style='font-size: 75px; color: lightgray'>
+			Designed with developers in mind
+		</h2>
+		<p style='font-size: 50px; color: lightgray'>
+			Unleashed for enhanced productivity.
+			<br />
+			Provide feedback on repositories created by others.
+			<br />
+			Step into the platform that captures the hearts of developers
+			worldwide.
+			<br />
+			Welcome to Visual Vault!
+		</p>
 
-	<div class='signup-form'>
-		<input type='email' placeholder='Email' />
-		<button onclick='signUp()'>Sign Up for Visual Vault</button>
-	</div>
-
-</article>
-
-<div>
-	<h2>Featured User Projects</h2>
-	{{#each projects}}
-		<div class='project'>
-			<h3>{{title}}</h3>
-			<p>{{description}}</p>
+		<div class='signup-form'>
+			<input type='email' placeholder='Email' />
+			<button onclick='signUp()'>Sign Up for Visual Vault</button>
 		</div>
-	{{/each}}
-</div>
 
-<aside>
-	Maybe have a side bar that go can go to extra options
-</aside>
+	</article>
+{{/unless}}
+
+<!-- Loop over each object in the projects array -->
+<article class="feature_projects">
+<h2 class="feature_text">Featured User Projects</h2>
+
+{{#each projects as |project|}}
+{{> project_card}}
+{{/each}}
+</article>
