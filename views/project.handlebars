@@ -1,7 +1,5 @@
 <article>
-
 	{{! SOCIAL MEDIA TAGS }}
-
 	{{! TITLE OF PROJECT }}
 	<h2>{{project.project_name}}</h2>
 
@@ -14,29 +12,23 @@
 			/></a>
 		<a href='{{project.deployed_link}}'>Deployed Link</a>
 	</div>
+	 {{#if project.project_images}}
 	<div class="slide-btn-container">
 	 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
+ 
 	<div class='slideshow-container'>
 		{{#each project.project_images as |image|}}
 		{{> project_imageSlide}}
 		{{/each}}
 	</div>
+	{{/if}}
 	 <!-- Next and previous buttons -->
  
 
-<br>
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>
 	{{! PROJECT DESCRIPTION }}
 
 	<p>{{project.description}}</p>
 </article>
-
-
 <script src='../js/project.js'></script>
