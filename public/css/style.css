@@ -132,3 +132,19 @@ footer {
 	width: 100%;
 	min-height: 600px;
 }
+
+.project-links {
+	display: flex;
+
+	align-items: center;
+}
+
+.social_containers {
+	margin: 5px;
+	display: flex;
+	width: 60px;
+	height: 60px;
+}
+.socials {
+	object-fit: contain;
+}

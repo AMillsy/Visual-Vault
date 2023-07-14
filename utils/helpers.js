@@ -7,4 +7,22 @@ module.exports = {
 		// format large numbers with commas
 		return parseInt(amount).toLocaleString();
 	},
+	getSocialImage: (social) => {
+		switch (social) {
+			case `twitter`:
+				return; //twitter image saved locally "/images/twitter.png"
+			case 'instagram':
+				break;
+			case 'facebook':
+				break;
+			case 'linkedin':
+				break;
+			default:
+				return; //Basic social image, or no image at all
+		}
+	},
+
+	getGithubLink: (githubName) => {
+		return `https://github.com/${githubName}`;
+	},
 };

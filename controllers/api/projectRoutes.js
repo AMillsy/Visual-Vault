@@ -49,6 +49,8 @@ router.post(
 	'/images/:id',
 	uploadProjects.array(`images`, 5),
 	async (req, res, next) => {
+		if (typeof req.files.map !== `function`)
+			return res.status(400).json({ message: 'Error sending images' });
 		const imagesData = req.files.map(({ location }) => {
 			return { link: location, project_id: req.params.id };
 		});
