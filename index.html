@@ -2,9 +2,117 @@
 <html>
 	<head>
 		<title>Visual Vault</title>
-		<style></style>
+		<style>
+			body {
+				background-image: url('/background.png');
+				background-repeat: no-repeat;
+				background-size: cover;
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+			}
+
+			header {
+				background-color: rgba(0, 136, 204, 0.8);
+				color: white;
+				padding: 20px;
+				text-align: center;
+				position: relative;
+			}
+
+			.logo {
+				max-width: 200px;
+				margin: 0 auto;
+			}
+
+			.navigation {
+				position: absolute;
+				top: 20px;
+				right: 20px;
+			}
+
+			.navigation button {
+				margin-left: 10px;
+				background-color: #ffffff;
+				color: #0088cc;
+				border: none;
+				border-radius: 4px;
+				padding: 8px 12px;
+				font-size: 14px;
+				cursor: pointer;
+				transition: background-color 0.3s ease;
+			}
+
+			.navigation button:hover {
+				background-color: #0088cc;
+				color: white;
+			}
+
+			main {
+				padding: 20px;
+			}
+
+			footer {
+				background-color: rgba(0, 136, 204, 0.8);
+				color: white;
+				padding: 10px;
+				text-align: center;
+			}
+
+			.signup-form {
+				max-width: 300px;
+				margin: 0 auto;
+				text-align: center;
+			}
+
+			.signup-form input {
+				width: 100%;
+				padding: 8px;
+				margin-bottom: 10px;
+			}
+
+			.signup-form button {
+				background-color: #0088cc;
+				color: white;
+				border: none;
+				border-radius: 4px;
+				padding: 8px 12px;
+				font-size: 14px;
+				cursor: pointer;
+			}
+		</style>
 	</head>
 	<body>
+		<header>
+			<img class="logo" src="Logop2.png" alt="Visual Vault Logo" />
+			<div class="navigation">
+				<button onclick="scrollToSection('about')">About Us</button>
+				<button onclick="scrollToSection('contact')">Contact Us</button>
+				<button onclick="window.location.href='login.html'">
+					Login
+				</button>
+			</div>
+		</header>
+
+		<main>
+			<h2 id="about" style="font-size: 75px; color: lightgray">
+				Designed with developers in mind
+			</h2>
+			<p style="font-size: 50px; color: lightgray">
+				Unleashed for enhanced productivity. <br />
+				Provide feedback on repositories created by others. <br />
+				Step into the platform that captures the hearts of developers
+				worldwide.
+				<br />
+				Welcome to Visual Vault!
+			</p>
+
+			<div class="signup-form">
+				<input type="email" placeholder="Email" />
+				<button onclick="signUp()">Sign Up for Visual Vault</button>
+			</div>
+		</main>
+
 		<footer>
 			<p>Email: info@visualvault.com</p>
 			<p>Phone: 123-456-7890</p>
