@@ -9,8 +9,12 @@ Project.init(
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		description: {
+		caption: {
 			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		description: {
+			type: DataTypes.TEXT,
 		},
 		user_id: {
 			type: DataTypes.INTEGER,
@@ -35,6 +39,7 @@ Project.init(
 	{
 		sequelize,
 		underscored: true,
+		freezeTableName: true,
 		modelName: 'project',
 	}
 );

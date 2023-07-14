@@ -31,6 +31,7 @@ Social.init(
 	{
 		sequelize,
 		underscored: true,
+		freezeTableName: true,
 		modelName: 'social',
 	}
 );
