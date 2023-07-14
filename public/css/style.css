@@ -54,13 +54,14 @@ header {
 	padding: 20px;
 	text-align: center;
 	position: relative;
+	
 }
 
 .logo {
 	top: 0;
 	left: 0;
 	position: absolute;
-	max-width: 200px;
+	max-width: 220px;
 	margin: -10px;
 }
 
@@ -76,7 +77,7 @@ nav {
 	right: 0;
 	top: 0;
 	margin: 30px;
-	width: 30%;
+	width: 40%;
 
 }
 .navigation button {
@@ -153,21 +154,18 @@ footer {
 	object-fit: contain;
 }
 
-/* search bar styling  */
-
 .search-bar {
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 .search-bar input[type="text"] {
-    font-size: 19px;
-    padding: 8px;
-    width: 400px;
+    flex-grow: 1;
+    font-size: 18px;
+    padding: 10px;
     border-radius: 5px;
     border: none;
+	width: 40%;
 }
 
 .search-bar button {
@@ -286,4 +284,11 @@ footer {
 	to {
 		opacity: 1;
 	}
+}
+
+@media (max-width: 1700px) {
+    nav button {
+        margin-right: 0;
+    	margin-bottom: 10px;
+    }
 }
