@@ -1,13 +1,19 @@
 
-<nav>
-    <ul>
-        <li><a href="/Homepage">Home</a></li>
-        <li><a href="/Recent">Recent Projects</a></li>
-        <li>
+<header >
+    <img class="logo" src="/images/Logop2.png" alt="Visual Vault Logo" />
+		<nav class="navigation">
+            <div class="search-bar">
             <form action="/search" method="GET">
-                <input type="text" name="search" placeholder="Search for a user or project">
-                <button type="submit">Search</button>
+            <input type="text" name="search" placeholder="Search for a user or project">
+            <button type="submit">Search</button>
             </form>
-        </li>
-    </ul>
-</nav>
+            </div>
+        <button onclick="/Homepage">Home</button>
+        <button onclick="/Recent">Recent Projects</button>
+		<button onclick="scrollToSection('about')">About Us</button>
+		<button onclick="scrollToSection('contact')">Contact Us</button>
+		<button onclick="window.location.href='login.html'">
+			Login
+		</button>
+	    </nav>
+</header>
