@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User, Reaction, Social } = require('../models');
+const { Project, User, Reaction, Social, Project_Image } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -33,29 +33,35 @@ router.get('/', async (req, res) => {
 	}
 });
 
+//IF YOU WANT TO KNOW WHAT IS FULLY COMING BACK
+//USE POSTMAN AND DO -- http://localhost:3001/api/projects/2 <--- Get request
 router.get('/project/:id', async (req, res) => {
 	try {
 		const projectData = await Project.findByPk(req.params.id, {
 			include: [
 				{
 					model: User,
-					attributes: ['name'],
+					attributes: ['name', 'github_username', 'profile_image'],
+					include: [
+						{
+							model: Social,
+							attributes: [
+								'social_type',
+								'social_other',
+								'external_link',
+							],
+						},
+					],
 				},
-				{
-					model: Reaction,
-					attributes: ['type', 'user_id'], // do we need to make a helper that counts the reactions and sends it to the handlebars?
-				},
+				{ model: Project_Image },
 			],
 		});
 
 		const project = projectData.get({ plain: true });
 
-		res.render('project', {
-			...project,
-			logged_in: req.session.logged_in,
-		});
-	} catch (err) {
-		res.status(500).json(err);
+		res.render('project', { project: project });
+	} catch (error) {
+		res.status(500).json({ message: `AN ERROR HAS OCCURRED` });
 	}
 });
 
@@ -101,4 +107,47 @@ router.get(`/signup`, (req, res) => {
 
 	res.render(`/signup`);
 });
+
 module.exports = router;
+
+/**
+try {
+	const projectData = await Project.findByPk(req.params.id, {
+		include: [
+			{
+				model: User,
+				attributes: ['name', 'github_username', 'profile_image'],
+				include: [
+					{
+						model: Social,
+						attributes: [
+							'social_type',
+							'social_other',
+							'external_link',
+						],
+					},
+				],
+			},
+			{ model: Project_Image },
+		],
+	});
+
+	if (!projectData)
+		return res.status(400).json({ message: 'No Project found' });
+
+	const project = projectData.get({ plain: true });
+	const reactionData = await sequelize.query(
+		`SELECT type, COUNT(type) as total FROM reaction WHERE reaction.project_id = ${req.params.id} GROUP BY type;`,
+		{ type: Sequelize.QueryTypes.SELECT }
+	);
+
+	console.log(`I AM HERE`);
+	res.render(`project`, {
+		project: project,
+		reaction: reactionData,
+		logged_in: req.session.logged_in,
+	});
+} catch (error) {
+	res.status(400).json(error);
+}
+ */

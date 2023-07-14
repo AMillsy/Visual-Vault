@@ -27,7 +27,7 @@ Project.hasMany(Reaction, {
 });
 
 Reaction.belongsTo(Project, {
-	foreignKey: 'project_id,',
+	foreignKey: 'project_id',
 });
 
 User.hasMany(Social, {
