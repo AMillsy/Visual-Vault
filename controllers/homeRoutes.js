@@ -39,7 +39,7 @@ router.get('/project/:id', async (req, res) => {
 			include: [
 				{
 					model: User,
-					attributes: ['id', 'name'],
+					attributes: ['name'],
 				},
 				{
 					model: Reaction,
