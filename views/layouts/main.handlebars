@@ -19,7 +19,7 @@
           </form>
           </div>
         <button onclick="window.location.href='/'">Home</button>
-        <button onclick="/Recent">Recent Projects</button>
+        <button onclick="window.location.href='/recent'">Recent Projects</button>
 				<button onclick="scrollToSection('about')">About Us</button>
 				<button onclick="scrollToSection('contact')">Contact Us</button>
         {{#unless logged_in}}
@@ -27,7 +27,7 @@
 					Login
 				</button>
         {{else}}
-        <p>WE ARE SIGNED IN</p>
+        <button onclick="window.location.href='/profile'">Profile</button>
         {{/unless}}
 			</nav>
 		</header>
