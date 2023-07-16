@@ -8,9 +8,9 @@
 	<div class='col-md-6'>
 		<h3>Create a New Project:</h3>
 
-		<form class='form new-project-form'>
+		<form class='form new-project-form' enctype="multipart/form-data" >
 			<div class='form-group'>
-				<label for='project-name'>project name:</label>
+				<label for='project-name'>project name: *Needed</label>
 				<input
 					class='form-input'
 					type='text'
@@ -19,12 +19,31 @@
 				/>
 			</div>
 			<div class='form-group'>
-				<label for='project-funding'>needed funding ($):</label>
+				<label for='project-github'>Github Link:</label>
 				<input
 					class='form-input'
-					type='number'
-					id='project-funding'
-					name='project-funding'
+					id='project-github'
+					name='project-github'
+					placeholder="https://github.com/User/Project"
+				></input>
+			</div>
+			<div class='form-group'>
+				<label for='project-deployed'>Deployed Link:</label>
+				<input
+					class='form-input'
+					id='project-deployed'
+					name='project-deployed'
+					placeholder="https://DeployedLink.com"
+				></input>
+			</div>
+			<div class='form-group'>
+				<label for='project-caption'>caption: *Needed</label>
+				<input
+					class='form-input'
+					type='text'
+					id='project-caption'
+					name='project-caption'
+					placeholder='Something Captivating'
 				/>
 			</div>
 			<div class='form-group'>
@@ -34,6 +53,11 @@
 					id='project-desc'
 					name='project-desc'
 				></textarea>
+			</div>
+			
+			<div class="form-group">
+				<label for="project-image">Select Images:</label>
+				<input enctype="multipart/form-data" type="file" id="project-images" name="images" multiple>
 			</div>
 			<div class='form-group'>
 				<button type='submit' class='btn btn-primary'>Create</button>
@@ -50,7 +74,7 @@
 					<div class='col-md-8'>
 						<h4><a
 								href='/project/{{project.id}}'
-							>{{project.name}}</a></h4>
+							>{{project.project_name}}</a></h4>
 					</div>
 					<div class='col-md-4'>
 						<button

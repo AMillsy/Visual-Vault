@@ -25,12 +25,14 @@ Project.init(
 		},
 		deployed_link: {
 			type: DataTypes.STRING,
+			allowNull: true,
 			validate: {
 				isUrl: true,
 			},
 		},
 		repo_link: {
 			type: DataTypes.STRING,
+			allowNull: true,
 			validate: {
 				isUrl: true,
 			},

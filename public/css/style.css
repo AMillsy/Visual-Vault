@@ -15,7 +15,8 @@ header,
 	color: white;
 }
 .project {
-	height: 100px;
+	position: relative;
+	min-height: 100px;
 	margin: 5px;
 	color: white;
 	background-color: #121212;
@@ -54,7 +55,6 @@ header {
 	padding: 20px;
 	text-align: center;
 	position: relative;
-	
 }
 
 .logo {
@@ -78,7 +78,6 @@ nav {
 	top: 0;
 	margin: 30px;
 	width: 40%;
-
 }
 .navigation button {
 	position: relative;
@@ -155,32 +154,32 @@ footer {
 }
 
 .search-bar {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
-.search-bar input[type="text"] {
-    flex-grow: 1;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
+.search-bar input[type='text'] {
+	flex-grow: 1;
+	font-size: 18px;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
 	width: 40%;
 }
 
 .search-bar button {
-    font-size: 17px;
-    padding: 10px 20px;
-    background-color: #555;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-left: 10px;
-    cursor: pointer;
+	font-size: 17px;
+	padding: 10px 20px;
+	background-color: #555;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	margin-left: 10px;
+	cursor: pointer;
 }
 
 .search-bar button:hover {
-    background-color: #777;
+	background-color: #777;
 }
 /*Test styles*/
 
@@ -287,8 +286,8 @@ footer {
 }
 
 @media (max-width: 1700px) {
-    nav button {
-        margin-right: 0;
-    	margin-bottom: 10px;
-    }
+	nav button {
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
 }

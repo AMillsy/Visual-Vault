@@ -14,7 +14,6 @@ function currentSlide(n) {
 function showSlides(n) {
 	let i;
 	let slides = document.getElementsByClassName('mySlides');
-	console.log(slides);
 	let dots = document.getElementsByClassName('dot');
 	if (n > slides.length) {
 		slideIndex = 1;
@@ -29,5 +28,4 @@ function showSlides(n) {
 		dots[i].className = dots[i].className.replace(' active', '');
 	}
 	slides[slideIndex - 1].style.display = 'flex';
-	dots[slideIndex - 1].className += ' active';
 }
