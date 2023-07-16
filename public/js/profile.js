@@ -4,7 +4,7 @@ const project_description = document.querySelector(`#project-desc`);
 const project_caption = document.querySelector(`#project-caption`);
 const project_deployed = document.querySelector(`#project-deployed`);
 const project_images = document.querySelector(`#project-images`);
-
+const preview_container = document.querySelector(`.preview-container`);
 const newFormHandler = async (event) => {
 	event.preventDefault();
 
@@ -70,6 +70,17 @@ const delButtonHandler = async (event) => {
 	}
 };
 
+project_images.onchange = function () {
+	const files = project_images.files;
+	preview_container.innerHTML = '';
+	if (files) {
+		for (const file of files) {
+			const url = URL.createObjectURL(file);
+			const html = `<img class="preview-image" src="${url}">`;
+			preview_container.insertAdjacentHTML('afterbegin', html);
+		}
+	}
+};
 document
 	.querySelector('.new-project-form')
 	.addEventListener('submit', newFormHandler);
