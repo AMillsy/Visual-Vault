@@ -5,6 +5,8 @@ const project_caption = document.querySelector(`#project-caption`);
 const project_deployed = document.querySelector(`#project-deployed`);
 const project_images = document.querySelector(`#project-images`);
 const preview_container = document.querySelector(`.preview-container`);
+const profile_preview = document.querySelector(`#profile-preview`);
+const profile_picture = document.querySelector(`#profile-picture`);
 const newFormHandler = async (event) => {
 	event.preventDefault();
 
@@ -69,7 +71,23 @@ const delButtonHandler = async (event) => {
 		}
 	}
 };
-
+profile_picture.onchange = function () {
+	const [file] = profile_picture.files;
+	console.log(file);
+	console.log(`hi`);
+	profile_preview.innerHTML = '';
+	if (file) {
+		console.log('We have an image');
+		const url = URL.createObjectURL(file);
+		console.log(url);
+		const el = document.createElement('img');
+		el.classList.add('preview-image');
+		el.classList.add('preview-profile');
+		el.src = url;
+		console.log(el);
+		profile_preview.insertAdjacentElement('afterbegin', el);
+	}
+};
 project_images.onchange = function () {
 	const files = project_images.files;
 	preview_container.innerHTML = '';
@@ -81,6 +99,7 @@ project_images.onchange = function () {
 		}
 	}
 };
+
 document
 	.querySelector('.new-project-form')
 	.addEventListener('submit', newFormHandler);
