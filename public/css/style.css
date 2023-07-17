@@ -318,6 +318,12 @@ p {
   	margin: 20px;
 }
 
+h2 {
+	display: flex;
+  	justify-content: left;
+  	margin: 20px;
+}
+
 
 @keyframes fade {
 	from {
