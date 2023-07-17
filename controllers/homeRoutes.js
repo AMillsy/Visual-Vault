@@ -156,7 +156,6 @@ router.get('/search', async (req, res) => {
 
 	try {
 		const findUser = await User.findAll({
-			raw: true,
 			attributes: ['name', 'id'],
 			where: {
 				name: {
