@@ -54,7 +54,7 @@ body {
 }
 
 .logo {
-	max-width: 220px;
+	max-width: 250px;
 	max-height: 180px;
 	margin: -10px;
 }
@@ -305,6 +305,20 @@ footer {
 .preview-profile {
 	border-radius: 50%;
 }
+
+.reaction-buttons {
+	display: flex;
+  	justify-content: left;
+  	margin: 20px;
+}
+
+p {
+	display: flex;
+  	justify-content: left;
+  	margin: 20px;
+}
+
+
 @keyframes fade {
 	from {
 		opacity: 0.4;
