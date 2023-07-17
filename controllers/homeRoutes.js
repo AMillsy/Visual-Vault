@@ -43,7 +43,11 @@ router.get('/project/:id', async (req, res) => {
 			include: [
 				{
 					model: User,
-					attributes: ['name', 'github_username', 'profile_image'],
+					attributes: [
+						'name',
+						'github_username',
+						'profile_image_link',
+					],
 					include: [
 						{
 							model: Social,
@@ -84,7 +88,7 @@ router.get('/profile', withAuth, async (req, res) => {
 		});
 
 		const user = userData.get({ plain: true });
-		console.log(user);
+
 		res.render('profile', {
 			...user,
 			logged_in: req.session.logged_in,

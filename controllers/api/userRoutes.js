@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { uploadProjects, uploadUsers, s3 } = require('../../config');
 const { User } = require('../../models');
-
+require('dotenv').config();
 router.post('/', async (req, res) => {
 	try {
 		const userData = await User.create(req.body);
@@ -60,10 +60,38 @@ router.post('/logout', (req, res) => {
 	}
 });
 
-router.post(`/picture`, uploadUsers.single(`photo`), (req, res, next) => {
-	const imageData = req.file.location;
+router.post(`/image`, uploadUsers.single(`image`), async (req, res, next) => {
+	console.log('Getting in here');
+	if (!req.file) return res.status(400).json({ message: 'No image sent' });
+	console.log(req.session.user_id);
+	const { key, location } = req.file;
+	console.log(req.file);
+	console.log(location);
+	try {
+		const getUser = await User.findByPk(req.session.user_id);
+		const getData = getUser.get({ plain: true });
+		const { profile_image_key } = getData;
+		console.log(profile_image_key);
+		const params = {
+			Bucket: process.env.AWS_BUCKET,
+			Key: profile_image_key,
+		};
+		s3.deleteObject(params, function (err, data) {
+			if (err)
+				res.status(400).json({
+					message: 'Error removing profile image',
+				});
+			else console.log(data);
+		});
+		const userData = await User.update(
+			{ profile_image_link: location, profile_image_key: key },
+			{ where: { id: req.session.user_id } }
+		);
 
-	res.status(200).json(imageData);
+		res.status(200).json(userData);
+	} catch (error) {
+		res.status(200).json(error);
+	}
 });
 
 module.exports = router;
