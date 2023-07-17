@@ -16,7 +16,7 @@ const hbs = exphbs.create({ helpers });
 const sess = {
 	secret: 'Super secret secret',
 	cookie: {
-		maxAge: 300000,
+		maxAge: 86_400_000, // <---- Thats 24 hours 1000 * 60 * 60 * 24
 		httpOnly: true,
 		secure: false,
 		sameSite: 'strict',
@@ -36,7 +36,7 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 app.use(routes);
 

@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const { Project, User, Reaction, Social } = require('../models');
+const { Project, User, Reaction, Social, Project_Image } = require('../models');
+const { restore } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
 	try {
 		// Get all projects and JOIN with user data
+		console.log(req.session.logged_in);
 		const projectData = await Project.findAll({
 			include: [
 				{
@@ -35,29 +37,42 @@ router.get('/', async (req, res) => {
 	}
 });
 
+//IF YOU WANT TO KNOW WHAT IS FULLY COMING BACK
+//USE POSTMAN AND DO -- http://localhost:3001/api/projects/2 <--- Get request
 router.get('/project/:id', async (req, res) => {
 	try {
 		const projectData = await Project.findByPk(req.params.id, {
 			include: [
 				{
 					model: User,
-					attributes: ['name'],
+					attributes: ['name', 'github_username', 'profile_image'],
+					include: [
+						{
+							model: Social,
+							attributes: [
+								'social_type',
+								'social_other',
+								'external_link',
+							],
+						},
+						{
+							model: Reaction,
+							attributes: ['type', 'user_id'], 
+						},
+					],
 				},
-				{
-					model: Reaction,
-					attributes: ['type', 'user_id'], 
-				},
+				{ model: Project_Image },
 			],
 		});
 
 		const project = projectData.get({ plain: true });
 
 		res.render('project', {
-			...project,
+			project: project,
 			logged_in: req.session.logged_in,
 		});
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json({ message: `AN ERROR HAS OCCURRED` });
 	}
 });
 
@@ -75,10 +90,10 @@ router.get('/profile', withAuth, async (req, res) => {
 		});
 
 		const user = userData.get({ plain: true });
-
+		console.log(user);
 		res.render('profile', {
 			...user,
-			logged_in: true,
+			logged_in: req.session.logged_in,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -103,4 +118,67 @@ router.get(`/signup`, (req, res) => {
 
 	res.render(`/signup`);
 });
+
+router.get(`/recent`, withAuth, async (req, res) => {
+	try {
+		const projectData = await Project.findAll({
+			limit: 10,
+			order: [[`updatedAt`, `DESC`]],
+		});
+
+		if (!projectData)
+			return res.status(400).json({ message: `No project data found ` });
+
+		const projects = projectData.map((project) => {
+			return project.get({ plain: true });
+		});
+
+		console.log(projects);
+		res.render(`recent`, { projects, logged_in: req.session.logged_in });
+	} catch (err) {
+		res.status(400).json(err);
+	}
+});
 module.exports = router;
+
+/**
+try {
+	const projectData = await Project.findByPk(req.params.id, {
+		include: [
+			{
+				model: User,
+				attributes: ['name', 'github_username', 'profile_image'],
+				include: [
+					{
+						model: Social,
+						attributes: [
+							'social_type',
+							'social_other',
+							'external_link',
+						],
+					},
+				],
+			},
+			{ model: Project_Image },
+		],
+	});
+
+	if (!projectData)
+		return res.status(400).json({ message: 'No Project found' });
+
+	const project = projectData.get({ plain: true });
+	const reactionData = await sequelize.query(
+		`SELECT type, COUNT(type) as total FROM reaction WHERE reaction.project_id = ${req.params.id} GROUP BY type;`,
+		{ type: Sequelize.QueryTypes.SELECT }
+	);
+
+	console.log(`I AM HERE`);
+	res.render(`project`, {
+		project: project,
+		reaction: reactionData,
+		logged_in: req.session.logged_in,
+	});
+} catch (error) {
+	res.status(400).json(error);
+}
+ */

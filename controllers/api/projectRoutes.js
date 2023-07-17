@@ -1,11 +1,30 @@
 const router = require('express').Router();
-const { Project, Project_Image } = require('../../models');
+const {
+	Project,
+	Project_Image,
+	User,
+	Reaction,
+	Social,
+} = require('../../models');
 const withAuth = require('../../utils/auth');
 const { uploadProjects } = require(`../../config`);
+const sequelize = require('../../config/connection');
+const Sequelize = require('sequelize');
+
 router.post('/', withAuth, async (req, res) => {
+	const { project_name, caption, description, deployed_link, repo_link } =
+		req.body;
+
+	const deployed = deployed_link || null;
+	const repo = repo_link || null;
+
 	try {
 		const newProject = await Project.create({
-			...req.body,
+			project_name: project_name,
+			caption: caption,
+			description: description,
+			deployed_link: deployed,
+			repo_link: repo,
 			user_id: req.session.user_id,
 		});
 
@@ -39,9 +58,15 @@ router.post(
 	'/images/:id',
 	uploadProjects.array(`images`, 5),
 	async (req, res, next) => {
+		if (typeof req.files.map !== `function`)
+			return res.status(400).json({ message: 'Error sending images' });
+
+		console.log(`req.files.map is a function`);
+		console.log(req.files);
 		const imagesData = req.files.map(({ location }) => {
 			return { link: location, project_id: req.params.id };
 		});
+		console.log(imagesData);
 
 		try {
 			const imagesResponse = await Project_Image.bulkCreate(imagesData);
@@ -52,4 +77,40 @@ router.post(
 		}
 	}
 );
+
+router.get('/:id', async (req, res) => {
+	try {
+		const projectData = await Project.findByPk(req.params.id, {
+			include: [
+				{
+					model: User,
+					attributes: ['name', 'github_username', 'profile_image'],
+					include: [
+						{
+							model: Social,
+							attributes: [
+								'social_type',
+								'social_other',
+								'external_link',
+							],
+						},
+					],
+				},
+				{ model: Project_Image },
+			],
+		});
+
+		if (!projectData)
+			return res.status(400).json({ message: 'No Project found' });
+
+		const reactionData = await sequelize.query(
+			`SELECT type, COUNT(type) as total FROM reaction WHERE reaction.project_id = ${req.params.id} GROUP BY type;`,
+			{ type: Sequelize.QueryTypes.SELECT }
+		);
+
+		res.status(200).json({ project: projectData, reaction: reactionData });
+	} catch (error) {
+		res.status(400).json(error);
+	}
+});
 module.exports = router;

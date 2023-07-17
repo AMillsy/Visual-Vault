@@ -1,11 +1,34 @@
 <article>
-	<!-- prettier ignore -->
-	SOCIAL MEDIA TAGS
-	<!-- prettier ignore -->
-	TITLE OF PROJECT
-	<!-- prettier ignore -->
-	LINK TO THE PROJECT
-	<!-- prettier ignore -->
-	PROJECT DESCRIPTION
+	{{! SOCIAL MEDIA TAGS }}
+	{{! TITLE OF PROJECT }}
+	<h2>{{project.project_name}}</h2>
 
+	{{! LINK TO THE PROJECT }}
+	<div class='project-links'>
+		<a class='social_containers' href='{{project.repo_link}}'><img
+				class='socials'
+				src='/images/github.png'
+				alt=''
+			/></a>
+		<a href='{{project.deployed_link}}'>Deployed Link</a>
+	</div>
+	 {{#if project.project_images}}
+	<div class="slide-btn-container">
+	 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+ 
+	<div class='slideshow-container'>
+		{{#each project.project_images as |image|}}
+		{{> project_imageSlide}}
+		{{/each}}
+	</div>
+	{{/if}}
+	 <!-- Next and previous buttons -->
+ 
+
+	{{! PROJECT DESCRIPTION }}
+
+	<p>{{project.description}}</p>
 </article>
+<script src='../js/project.js'></script>

@@ -32,4 +32,6 @@ Reaction.init(
 	}
 );
 
+Reaction.removeAttribute('id');
+
 module.exports = Reaction;

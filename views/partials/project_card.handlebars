@@ -1,6 +1,7 @@
-<button id={{id}} class='project'>
+<a href='/project/{{id}}' id={{id}} class='project'>
 	<h3>{{project_name}}</h3>
 	<p>{{caption}}</p>
+	<p class='date'>Updated: {{format_date updatedAt}}</p>
 	{{!-- <ul>
 		{{#each reactions as |reaction|}}
 			<li>{{type}}</li>
@@ -8,4 +9,4 @@
 	</ul> --}}
 	<p>{{reaction_count_string reactions}}</p>
 	{{> reaction_buttons}}
-</button>
+</a>
