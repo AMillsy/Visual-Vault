@@ -5,17 +5,17 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
 	try {
-		// Get all projects and JOIN with user data
+		// Get all projects and JOIN with user data and reactions
 		console.log(req.session.logged_in);
 		const projectData = await Project.findAll({
 			include: [
 				{
-					model: User,
-					attributes: ['id', 'name'],
+					model: Reaction,
+					attributes: ['type', 'user_id'], 
 				},
 				{
-					model: Reaction,
-					attributes: ['type'],
+					model: User,
+					attributes: ['id', 'name'],
 				},
 			],
 		});
@@ -24,6 +24,8 @@ router.get('/', async (req, res) => {
 		const projects = projectData.map((project) =>
 			project.get({ plain: true })
 		);
+
+		console.log('projects');
 
 		// Pass serialized data and session flag into template
 		res.render('homepage', {
@@ -41,6 +43,10 @@ router.get('/project/:id', async (req, res) => {
 	try {
 		const projectData = await Project.findByPk(req.params.id, {
 			include: [
+				{
+					model: Reaction,
+					attributes: ['type', 'user_id'], 
+				},
 				{
 					model: User,
 					attributes: [

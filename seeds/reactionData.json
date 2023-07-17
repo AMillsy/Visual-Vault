@@ -32,31 +32,101 @@
 	{
 		"type": "thumbs-up",
 		"user_id": "1",
+		"project_id": "4"
+	},
+	{
+		"type": "stars",
+		"user_id": "1",
 		"project_id": "1"
 	},
 	{
-		"type": "liked",
+		"type": "stars",
 		"user_id": "1",
 		"project_id": "2"
 	},
 	{
-		"type": "liked",
+		"type": "stars",
 		"user_id": "1",
 		"project_id": "3"
 	},
 	{
-		"type": "liked",
+		"type": "stars",
 		"user_id": "2",
 		"project_id": "1"
 	},
 	{
-		"type": "liked",
+		"type": "stars",
 		"user_id": "2",
 		"project_id": "2"
 	},
 	{
-		"type": "thumbs-up",
+		"type": "stars",
 		"user_id": "3",
 		"project_id": "1"
+	},
+	{
+		"type": "stars",
+		"user_id": "3",
+		"project_id": "4"
+	},
+	{
+		"type": "heart",
+		"user_id": "1",
+		"project_id": "1"
+	},
+	{
+		"type": "heart",
+		"user_id": "1",
+		"project_id": "2"
+	},
+	{
+		"type": "heart",
+		"user_id": "1",
+		"project_id": "3"
+	},
+	{
+		"type": "heart",
+		"user_id": "2",
+		"project_id": "1"
+	},
+	{
+		"type": "bullseye",
+		"user_id": "2",
+		"project_id": "2"
+	},
+	{
+		"type": "bullseye",
+		"user_id": "3",
+		"project_id": "1"
+	},
+	{
+		"type": "bullseye",
+		"user_id": "3",
+		"project_id": "4"
+	},
+	{
+		"type": "bullseye",
+		"user_id": "1",
+		"project_id": "1"
+	},
+	{
+		"type": "bullseye",
+		"user_id": "1",
+		"project_id": "2"
+	},
+	{
+		"type": "bullseye",
+		"user_id": "1",
+		"project_id": "3"
+	},
+	{
+		"type": "bullseye",
+		"user_id": "2",
+		"project_id": "1"
+	},
+	{
+		"type": "bullseye",
+		"user_id": "2",
+		"project_id": "2"
 	}
 ]

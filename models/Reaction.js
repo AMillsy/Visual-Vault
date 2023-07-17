@@ -32,6 +32,6 @@ Reaction.init(
 	}
 );
 
-Reaction.removeAttribute('id');
+//Reaction.removeAttribute('id'); commented out as it was stopping reactions getting through.  Does removing this change anything?
 
 module.exports = Reaction;
