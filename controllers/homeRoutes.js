@@ -1,17 +1,16 @@
 const router = require('express').Router();
 const { Project, User, Reaction, Social, Project_Image } = require('../models');
-const { restore } = require('../models/User');
+const { sequelize } = require('../config');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
 	try {
 		// Get all projects and JOIN with user data and reactions
-		console.log(req.session.logged_in);
 		const projectData = await Project.findAll({
 			include: [
 				{
 					model: Reaction,
-					attributes: ['type', 'user_id'], 
+					attributes: ['type', 'user_id'],
 				},
 				{
 					model: User,
@@ -19,13 +18,10 @@ router.get('/', async (req, res) => {
 				},
 			],
 		});
-
 		// Serialize data so the template can read it
 		const projects = projectData.map((project) =>
 			project.get({ plain: true })
 		);
-
-		console.log('projects');
 
 		// Pass serialized data and session flag into template
 		res.render('homepage', {
@@ -45,7 +41,7 @@ router.get('/project/:id', async (req, res) => {
 			include: [
 				{
 					model: Reaction,
-					attributes: ['type', 'user_id'], 
+					attributes: ['type', 'user_id'],
 				},
 				{
 					model: User,
@@ -68,7 +64,6 @@ router.get('/project/:id', async (req, res) => {
 				{ model: Project_Image },
 			],
 		});
-
 		const project = projectData.get({ plain: true });
 
 		res.render('project', {
@@ -126,6 +121,16 @@ router.get(`/signup`, (req, res) => {
 router.get(`/recent`, withAuth, async (req, res) => {
 	try {
 		const projectData = await Project.findAll({
+			include: [
+				{
+					model: Reaction,
+					attributes: ['type', 'user_id'],
+				},
+				{
+					model: User,
+					attributes: ['id', 'name'],
+				},
+			],
 			limit: 10,
 			order: [[`updatedAt`, `DESC`]],
 		});
@@ -142,6 +147,18 @@ router.get(`/recent`, withAuth, async (req, res) => {
 	} catch (err) {
 		res.status(400).json(err);
 	}
+});
+
+router.get('/search', async (req, res) => {
+	const Op = sequelize.Op;
+	console.log('Entering the search function');
+	const search = req.query.search;
+	console.log(search);
+
+	try {
+		const findUser = User.findAll({ where: {} });
+	} catch (error) {}
+	res.status(200).json(search);
 });
 module.exports = router;
 

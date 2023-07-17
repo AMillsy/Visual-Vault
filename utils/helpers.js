@@ -25,43 +25,43 @@ module.exports = {
 		return JSON.stringify(data);
 	},
 	count_thumbs: (reactions) => {
-		var thumbs_count = 0;
-
+		let thumbs_count = 0;
+		console.log(reactions);
 		for (let i = 0; i < reactions.length; i++) {
-			if ( reactions[i].type === 'thumbs-up' ) {
+			if (reactions[i].type === 'thumbs-up') {
 				thumbs_count += 1;
 			}
-		};
+		}
 		return thumbs_count;
 	},
 	count_stars: (reactions) => {
-		var stars_count = 0;
+		let stars_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {
-			if ( reactions[i].type === 'stars' ) {
+			if (reactions[i].type === 'stars') {
 				stars_count += 1;
 			}
-		};
+		}
 		return stars_count;
 	},
 	count_heart: (reactions) => {
-		var heart_count = 0;
+		let heart_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {
-			if ( reactions[i].type === 'heart' ) {
+			if (reactions[i].type === 'heart') {
 				heart_count += 1;
 			}
-		};
+		}
 		return heart_count;
 	},
 	count_bullseye: (reactions) => {
-		var bullseye_count = 0;
+		let bullseye_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {
-			if ( reactions[i].type === 'bullseye' ) {
+			if (reactions[i].type === 'bullseye') {
 				bullseye_count += 1;
 			}
-		};
+		}
 		return bullseye_count;
 	},
 	getSocialImage: (social) => {
