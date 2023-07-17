@@ -4,7 +4,10 @@ const project_description = document.querySelector(`#project-desc`);
 const project_caption = document.querySelector(`#project-caption`);
 const project_deployed = document.querySelector(`#project-deployed`);
 const project_images = document.querySelector(`#project-images`);
-
+const preview_container = document.querySelector(`.preview-container`);
+const profile_preview = document.querySelector(`#profile-preview`);
+const profile_picture = document.querySelector(`#profile-picture`);
+const profile_form = document.querySelector('#profile-form');
 const newFormHandler = async (event) => {
 	event.preventDefault();
 
@@ -54,6 +57,21 @@ const newFormHandler = async (event) => {
 	window.location.reload();
 };
 
+profile_form.addEventListener('submit', async function (e) {
+	e.preventDefault();
+	const [file] = profile_picture.files;
+	const formData = new FormData();
+	console.log(file);
+	formData.append(`image`, file, file.name);
+
+	const response = await fetch(`/api/users/image`, {
+		method: `POST`,
+		body: formData,
+	});
+
+	if (!response) return console.log(`Error has occured with profile submit`);
+});
+
 const delButtonHandler = async (event) => {
 	if (event.target.hasAttribute('data-id')) {
 		const id = event.target.getAttribute('data-id');
@@ -66,6 +84,32 @@ const delButtonHandler = async (event) => {
 			document.location.replace('/profile');
 		} else {
 			alert('Failed to delete project');
+		}
+	}
+};
+profile_picture.onchange = function () {
+	const [file] = profile_picture.files;
+	profile_preview.innerHTML = '';
+	if (file) {
+		console.log('We have an image');
+		const url = URL.createObjectURL(file);
+
+		const el = document.createElement('img');
+		el.classList.add('preview-image');
+		el.classList.add('preview-profile');
+		el.src = url;
+		console.log(el);
+		profile_preview.insertAdjacentElement('afterbegin', el);
+	}
+};
+project_images.onchange = function () {
+	const files = project_images.files;
+	preview_container.innerHTML = '';
+	if (files) {
+		for (const file of files) {
+			const url = URL.createObjectURL(file);
+			const html = `<img class="preview-image" src="${url}">`;
+			preview_container.insertAdjacentHTML('afterbegin', html);
 		}
 	}
 };

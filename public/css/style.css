@@ -51,35 +51,26 @@ body {
 	padding: 0;
 }
 
-header {
-	background-color: rgba(0, 136, 204, 0.8);
-	color: white;
-	padding: 20px;
-	text-align: center;
-	position: relative;
-}
-
 .logo {
-	top: 0;
-	left: 0;
-	position: absolute;
 	max-width: 220px;
+	max-height: 180px;
 	margin: -10px;
 }
 
 header {
 	display: flex;
-	position: relative;
+	justify-content: space-between;
 	width: 100%;
-	height: 150px;
+	min-height: 150px;
+	background-color: rgba(0, 136, 204, 0.8);
+	color: white;
+	text-align: center;
+	position: relative;
 }
 
 nav {
-	position: absolute;
-	right: 0;
-	top: 0;
 	margin: 30px;
-	width: 40%;
+	width: 100%;
 }
 .navigation button {
 	position: relative;
@@ -277,6 +268,27 @@ footer {
 	margin: 20px;
 	display: flex;
 	justify-content: space-between;
+}
+.preview-container {
+	display: flex;
+	justify-content: space-evenly;
+}
+.preview-image-force {
+	display: flex;
+	max-width: 200px;
+	max-height: 200px;
+	height: auto;
+	width: auto;
+}
+.preview-image {
+	object-fit: cover;
+	max-width: 200px;
+	max-height: 200px;
+	width: 200px;
+	height: 200px;
+}
+.preview-profile {
+	border-radius: 50%;
 }
 @keyframes fade {
 	from {

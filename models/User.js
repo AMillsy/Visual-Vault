@@ -33,7 +33,10 @@ User.init(
 			type: DataTypes.STRING,
 			unique: true,
 		},
-		profile_image: {
+		profile_image_link: {
+			type: DataTypes.STRING,
+		},
+		profile_image_key: {
 			type: DataTypes.STRING,
 		},
 	},
