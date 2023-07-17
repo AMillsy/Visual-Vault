@@ -8,6 +8,7 @@ const preview_container = document.querySelector(`.preview-container`);
 const profile_preview = document.querySelector(`#profile-preview`);
 const profile_picture = document.querySelector(`#profile-picture`);
 const profile_form = document.querySelector('#profile-form');
+
 const newFormHandler = async (event) => {
 	event.preventDefault();
 
@@ -70,6 +71,8 @@ profile_form.addEventListener('submit', async function (e) {
 	});
 
 	if (!response) return console.log(`Error has occured with profile submit`);
+
+	window.location.reload();
 });
 
 const delButtonHandler = async (event) => {
