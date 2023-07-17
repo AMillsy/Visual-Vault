@@ -111,8 +111,9 @@ router.get('/:id', async (req, res) => {
 			`SELECT type, COUNT(type) as total FROM reaction WHERE reaction.project_id = ${req.params.id} GROUP BY type;`,
 			{ type: Sequelize.QueryTypes.SELECT }
 		);
+		console.log(projectData);
 
-		res.status(200).json({ project: projectData, reaction: reactionData });
+		res.status(200).json(projectData);
 	} catch (error) {
 		res.status(400).json(error);
 	}
