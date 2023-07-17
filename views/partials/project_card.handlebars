@@ -2,11 +2,11 @@
 	<h3>{{project_name}}</h3>
 	<p>{{caption}}</p>
 	<p class='date'>Updated: {{format_date updatedAt}}</p>
-	{{!-- <ul>
+	<ul>
 		{{#each reactions as |reaction|}}
 			<li>{{type}}</li>
 		{{/each}}
-	</ul> --}}
-	<p>{{reaction_count_string reactions}}</p>
-	{{> reaction_buttons}}
+	</ul>
+	<p>{{return_string reactions}}</p>
+	{{!-- {{> reaction_buttons}} --}}
 </a>

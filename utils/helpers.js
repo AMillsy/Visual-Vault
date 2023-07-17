@@ -21,71 +21,48 @@ module.exports = {
 		// format large numbers with commas
 		return parseInt(amount).toLocaleString();
 	},
-	reaction_count_string: (reactions) => {
-		var reaction_count = {
-			thumbs_up: 0,
-			star_struck: 0,
-			heart: 0,
-			clap: 0,
-		};
-
-		for (let i = 0; i < reactions.length; i++) {
-			switch (reactions[i].type) {
-				case 'thumbs-up':
-					reaction_count.thumbs_up += 1;
-					break;
-				
-				case 'star-struck':
-					reaction_count.star_struck += 1;
-					break;
-
-				case 'heart':
-					reaction_count.heart += 1;
-					break;
-				
-				case 'clap':
-					reaction_count.clap += 1;
-
-				default:
-					break;
-			}
-			
-		}
-
-		return JSON.stringify(reaction_count);
+	return_string: (data) => {
+		return JSON.stringify(data);
 	},
-	reaction_count: (reactions) => {
-		var reaction_count = {
-			thumbs_up: 0,
-			star_struck: 0,
-			heart: 0,
-			clap: 0,
-		};
+	count_thumbs: (reactions) => {
+		var thumbs_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {
-			switch (reactions[i].type) {
-				case 'thumbs-up':
-					reaction_count.thumbs_up += 1;
-					break;
-				
-				case 'star-struck':
-					reaction_count.star_struck += 1;
-					break;
-
-				case 'heart':
-					reaction_count.heart += 1;
-					break;
-				
-				case 'clap':
-					reaction_count.clap += 1;
-
-				default:
-					break;
+			if ( reactions[i].type === 'thumbs-up' ) {
+				thumbs_count += 1;
 			}
-			
-		}
+		};
+		return thumbs_count;
+	},
+	count_stars: (reactions) => {
+		var stars_count = 0;
 
-		return reaction_count;
+		for (let i = 0; i < reactions.length; i++) {
+			if ( reactions[i].type === 'stars' ) {
+				stars_count += 1;
+			}
+		};
+		return stars_count;
+	},
+	count_heart: (reactions) => {
+		var heart_count = 0;
+
+		for (let i = 0; i < reactions.length; i++) {
+			if ( reactions[i].type === 'heart' ) {
+				heart_count += 1;
+			}
+		};
+		return heart_count;
+	},
+	count_bullseye: (reactions) => {
+		var bullseye_count = 0;
+
+		for (let i = 0; i < reactions.length; i++) {
+			if ( reactions[i].type === 'bullseye' ) {
+				bullseye_count += 1;
+			}
+		};
+		return bullseye_count;
 	},
 	getSocialImage: (social) => {
 		switch (social) {

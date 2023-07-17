@@ -96,6 +96,10 @@ router.get('/:id', async (req, res) => {
 						},
 					],
 				},
+				{
+					model: Reaction,
+					attributes: ['type', 'user_id'], // added here so that we can make the reactions interactive
+				},
 				{ model: Project_Image },
 			],
 		});

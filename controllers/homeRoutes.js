@@ -5,17 +5,17 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
 	try {
-		// Get all projects and JOIN with user data
+		// Get all projects and JOIN with user data and reactions
 		console.log(req.session.logged_in);
 		const projectData = await Project.findAll({
 			include: [
 				{
-					model: User,
-					attributes: ['id', 'name'],
+					model: Reaction,
+					attributes: ['type', 'user_id'], 
 				},
 				{
-					model: Reaction,
-					attributes: ['type'],
+					model: User,
+					attributes: ['id', 'name'],
 				},
 			],
 		});
@@ -44,6 +44,10 @@ router.get('/project/:id', async (req, res) => {
 		const projectData = await Project.findByPk(req.params.id, {
 			include: [
 				{
+					model: Reaction,
+					attributes: ['type', 'user_id'], 
+				},
+				{
 					model: User,
 					attributes: ['name', 'github_username', 'profile_image'],
 					include: [
@@ -54,10 +58,6 @@ router.get('/project/:id', async (req, res) => {
 								'social_other',
 								'external_link',
 							],
-						},
-						{
-							model: Reaction,
-							attributes: ['type', 'user_id'], 
 						},
 					],
 				},

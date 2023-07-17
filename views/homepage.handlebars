@@ -28,6 +28,7 @@
 <h2 class="feature_text">Featured User Projects</h2>
 
 {{#each projects as |project|}}
-{{> project_card}}
+{{!-- {{> project_card}} --}}
+{{return_string project}}
 {{/each}}
 </article>
