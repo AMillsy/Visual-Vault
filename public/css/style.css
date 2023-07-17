@@ -114,6 +114,12 @@ footer {
 	flex-direction: column;
 }
 
+.footer-icon {
+	object-fit: contain;
+	width: 70px;
+	justify-content: center;
+}
+
 .signup-form {
 	max-width: 300px;
 	margin: 0 auto;

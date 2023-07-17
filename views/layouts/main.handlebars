@@ -36,10 +36,14 @@
         {{{body}}}
       </main>
       <footer>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="https://github.com/AMillsy/Matrix-project">GitHub</a></li>
+      <a class='footer-container' href="https://github.com/AMillsy/Matrix-project"><img
+				class='footer-icon'
+				src='/images/github.png'
+				alt='Github link'
+			/></a>
       </footer>
     </div>
+    
     <!-- Render script for logged in users only -->
     {{#if logged_in}}
       <script src='/js/logout.js'></script>
