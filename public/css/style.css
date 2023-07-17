@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
 
 header,
 .project:not(:last-child) {
@@ -289,6 +289,10 @@ footer {
 }
 .preview-profile {
 	border-radius: 50%;
+}
+
+.user-card {
+	background-color: black;
 }
 @keyframes fade {
 	from {
