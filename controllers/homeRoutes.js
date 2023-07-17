@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Project, User, Reaction, Social, Project_Image } = require('../models');
-const { sequelize } = require('../config');
+const { Op } = require('sequelize');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -150,15 +150,31 @@ router.get(`/recent`, withAuth, async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-	const Op = sequelize.Op;
 	console.log('Entering the search function');
 	const search = req.query.search;
 	console.log(search);
 
 	try {
-		const findUser = User.findAll({ where: {} });
-	} catch (error) {}
-	res.status(200).json(search);
+		console.log('Searching for users');
+		const findUser = await User.findAll({
+			attributes: ['name', 'id'],
+			where: {
+				name: {
+					[Op.like]: `%${search}%`,
+				},
+			},
+		});
+
+		const findProject = await Project.findAll({
+			where: {
+				project_name: { [Op.like]: `%${search}%` },
+			},
+		});
+
+		res.status(200).json({ user: findUser, projects: findProject });
+	} catch (error) {
+		res.status(400).json({ message: "Can't find anything" });
+	}
 });
 module.exports = router;
 
