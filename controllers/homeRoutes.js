@@ -43,7 +43,11 @@ router.get('/project/:id', async (req, res) => {
 			include: [
 				{
 					model: User,
-					attributes: ['name', 'github_username', 'profile_image'],
+					attributes: [
+						'name',
+						'github_username',
+						'profile_image_link',
+					],
 					include: [
 						{
 							model: Social,

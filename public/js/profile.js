@@ -64,8 +64,7 @@ profile_form.addEventListener('submit', async function (e) {
 	console.log(file);
 	formData.append(`image`, file, file.name);
 
-	const response = await (`/api/users/image`,
-	{
+	const response = await fetch(`/api/users/image`, {
 		method: `POST`,
 		body: formData,
 	});

@@ -61,10 +61,8 @@ router.post(
 		if (typeof req.files.map !== `function`)
 			return res.status(400).json({ message: 'Error sending images' });
 
-		console.log(`req.files.map is a function`);
-		console.log(req.files);
-		const imagesData = req.files.map(({ location }) => {
-			return { link: location, project_id: req.params.id };
+		const imagesData = req.files.map(({ key, location }) => {
+			return { key: key, link: location, project_id: req.params.id };
 		});
 		console.log(imagesData);
 
