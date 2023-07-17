@@ -311,7 +311,9 @@ footer {
 	justify-content: left;
 	margin: 20px;
 }
-
+.user-card {
+	background-color: black;
+}
 p {
 	display: flex;
 	justify-content: left;
