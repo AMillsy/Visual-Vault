@@ -23,6 +23,8 @@ router.get('/', async (req, res) => {
 			project.get({ plain: true })
 		);
 
+		console.log('projects');
+
 		// Pass serialized data and session flag into template
 		res.render('homepage', {
 			projects,
@@ -43,7 +45,7 @@ router.get('/project/:id', async (req, res) => {
 				},
 				{
 					model: Reaction,
-					attributes: ['type', 'user_id'], // do we need to make a helper that counts the reactions and sends it to the handlebars?
+					attributes: ['type', 'user_id'], 
 				},
 			],
 		});
