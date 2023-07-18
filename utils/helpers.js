@@ -25,6 +25,7 @@ module.exports = {
 		return JSON.stringify(data);
 	},
 	count_thumbs: (reactions) => {
+		if (!reactions) return 0;
 		let thumbs_count = 0;
 		for (let i = 0; i < reactions.length; i++) {
 			if (reactions[i].type === 'thumbs-up') {
@@ -34,6 +35,7 @@ module.exports = {
 		return thumbs_count;
 	},
 	count_stars: (reactions) => {
+		if (!reactions) return 0;
 		let stars_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {
@@ -44,6 +46,7 @@ module.exports = {
 		return stars_count;
 	},
 	count_heart: (reactions) => {
+		if (!reactions) return 0;
 		let heart_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {
@@ -54,6 +57,7 @@ module.exports = {
 		return heart_count;
 	},
 	count_bullseye: (reactions) => {
+		if (!reactions) return 0;
 		let bullseye_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {
@@ -65,14 +69,16 @@ module.exports = {
 	},
 	getSocialImage: (social) => {
 		switch (social) {
+			case `github`:
+				return `./images/github.png`;
 			case `twitter`:
-				return; //twitter image saved locally "/images/twitter.png"
+				return `./images/twitter.png`; //twitter image saved locally "/images/twitter.png"
 			case 'instagram':
-				break;
+				return `./images/instagram.png`;
 			case 'facebook':
-				break;
+				return `./images/facebook.png`;
 			case 'linkedin':
-				break;
+				return `./images/linkedin.png`;
 			default:
 				return; //Basic social image, or no image at all
 		}

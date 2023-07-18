@@ -2,7 +2,8 @@ const router = require('express').Router();
 const { Social } = require('../../models');
 
 //ID WILL BE THE USERS ID
-router.post('/:id', async (req, res) => {
+router.post('/', async (req, res) => {
+	console.log('Trying add a new social link');
 	const { social_type, social_other, external_link } = req.body;
 
 	if (!social_type || !external_link)
@@ -12,7 +13,7 @@ router.post('/:id', async (req, res) => {
 			social_type: social_type,
 			social_other: social_other,
 			external_link: external_link,
-			user_id: req.params.id,
+			user_id: req.session.user_id,
 		});
 
 		res.status(200).json(socialData);

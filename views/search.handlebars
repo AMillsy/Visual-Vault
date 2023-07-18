@@ -1,0 +1,14 @@
+{{#if users}}
+<h2>Users:</h2>
+{{#each users as |user|}}
+{{> usercard_partial}}
+{{/each}}
+{{/if}}
+{{#if projects}}
+<h2>Projects:</h2>
+<div class="feature_projects">
+{{#each projects as |project|}}
+{{>project_card}}
+{{/each}}
+{{/if}}
+</div>

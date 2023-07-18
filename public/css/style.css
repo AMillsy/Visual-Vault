@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
 
 header,
 .project:not(:last-child) {
@@ -9,19 +9,25 @@ header,
 	border-top: 5px black solid;
 	display: flex;
 	flex-direction: column;
-	background-color: #301934;
+	background-color: white;
 }
 .feature_text {
 	padding: 10px;
 	text-align: center;
-	color: white;
+	color: #3d0d6f;
 }
 .project {
 	position: relative;
 	min-height: 100px;
 	margin: 5px;
 	color: white;
-	background-color: #121212;
+	background-image: url('/images/project\ background.jpg');
+	background-size: cover;
+}
+
+.project-name {
+	margin-left: 1%;
+	margin-top: 1%;
 }
 
 .no-button {
@@ -54,31 +60,32 @@ body {
 }
 
 .logo {
-	max-width: 250px;
+	max-width: 275px;
 	max-height: 180px;
 	margin: -10px;
 }
 
-header {
+header { 
+	background-color: white;
+	height: 200px;
 	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	min-height: 150px;
-	background-color: rgba(0, 136, 204, 0.8);
-	color: white;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
 	text-align: center;
-	position: relative;
+
 }
 
 nav {
 	margin: 30px;
 	width: 100%;
 }
+
 .navigation button {
 	position: relative;
 	margin-left: 10px;
 	background-color: #ffffff;
-	color: #0088cc;
+	color: #3d0d6f;
 	border: none;
 	border-radius: 4px;
 	padding: 8px 15px;
@@ -88,7 +95,7 @@ nav {
 }
 
 .navigation button:hover {
-	background-color: #0088cc;
+	background-color: #3d0d6f;
 	color: white;
 }
 
@@ -97,12 +104,13 @@ nav {
 }
 
 footer {
-	background-color: rgba(0, 136, 204, 0.8);
+	background-color: #fff;
 	color: white;
 	padding: 10px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+	border-top: 1px solid #ccc;
 }
 
 .footer-icon {
@@ -121,25 +129,33 @@ footer {
 	width: 100%;
 	padding: 8px;
 	margin-bottom: 10px;
+	color: #3d0d6f;
 }
 
 .signup-form button {
-	background-color: #0088cc;
-	color: white;
+	background-color: white;
+	color: black;
 	border: none;
 	border-radius: 4px;
 	padding: 8px 12px;
 	font-size: 14px;
 	cursor: pointer;
+	margin-bottom: 30px;
+}
+
+.signup-form button:hover {
+	background-color: #521b5c;
+	color: white;
 }
 
 .introduction {
-	background-image: url('/images/background.png');
+	background-image: url('/images/coding\ background.jpg');
+	background-size: cover;
 	padding-top: 10px;
 	display: flex;
-	justify-content: center;
+	justify-content: left;
 	flex-direction: column;
-	align-items: center;
+	align-items: left;
 	width: 100%;
 	min-height: 600px;
 }
@@ -173,12 +189,14 @@ footer {
 	border-radius: 5px;
 	border: none;
 	width: 40%;
+	color: #3d0d6f;
+	border: 2px solid #3d0d6f;
 }
 
 .search-bar button {
 	font-size: 17px;
 	padding: 10px 20px;
-	background-color: #555;
+	background-color: #3d0d6f;
 	color: #fff;
 	border: none;
 	border-radius: 5px;
@@ -187,7 +205,7 @@ footer {
 }
 
 .search-bar button:hover {
-	background-color: #777;
+	background-color: #872c97;
 }
 /*Test styles*/
 
@@ -308,27 +326,112 @@ footer {
 
 .reaction-buttons {
 	display: flex;
-  	justify-content: left;
-  	margin: 20px;
+	justify-content: left;
+	margin: 20px;
 }
 
 .active-reaction {
 	background-color: #0088cc;
 }
 
+.user-card {
+	background-color: black;
+}
+
 p {
 	display: flex;
-  	justify-content: left;
-  	margin: 20px;
+	justify-content: left;
+	margin: 20px;
 }
 
 h2 {
 	display: flex;
-  	justify-content: left;
-  	margin: 20px;
+	justify-content: left;
+	margin: 20px;
+}
+.profile-title {
+	margin: 20px;
+	display: flex;
+	padding: 10px;
+	border-bottom: 2px solid black;
+	box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+		rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.profile_container {
+	margin: 20px;
+}
+.profile_link {
+	margin: 20px;
+	right: 0;
+	top: 0;
+	position: absolute;
+}
+.profile-image-nav {
+	object-fit: cover;
+	max-width: 90px;
+	max-height: 90px;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
 }
 
+.socials-container {
+	margin: 20px;
+	display: flex;
+	flex-direction: column;
+}
+.social-title {
+	text-decoration: underline;
+}
+.social-img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	z-index: -1;
+}
+.social-img-con {
+	display: flex;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
 
+	z-index: 100;
+}
+.social-create-container {
+	display: flex;
+	flex-direction: column;
+	max-width: 25%;
+	padding: 10px;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+}
+
+.social-link-input {
+	width: 150px;
+	margin-top: 10px;
+}
+.social-btn {
+	margin-top: 10px;
+	width: 40px;
+	height: 40px;
+	background-color: #0088cc;
+	color: white;
+	text-align: center;
+}
+.social-add {
+	margin-top: 20px;
+	font-weight: bolder;
+	font-size: 200%;
+}
+.social-create {
+	width: 60px;
+	height: 30px;
+	font-size: 125%;
+}
+#socials {
+	width: 100px;
+}
 @keyframes fade {
 	from {
 		opacity: 0.4;

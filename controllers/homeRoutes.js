@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Project, User, Reaction, Social, Project_Image } = require('../models');
-const { sequelize } = require('../config');
+const { Op } = require('sequelize');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
 		res.render('homepage', {
 			projects,
 			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -69,6 +70,7 @@ router.get('/project/:id', async (req, res) => {
 		res.render('project', {
 			project: project,
 			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
 		});
 	} catch (error) {
 		res.status(500).json({ message: `AN ERROR HAS OCCURRED` });
@@ -89,10 +91,11 @@ router.get('/profile', withAuth, async (req, res) => {
 		});
 
 		const user = userData.get({ plain: true });
-
+		console.log(user);
 		res.render('profile', {
 			...user,
 			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -142,23 +145,59 @@ router.get(`/recent`, withAuth, async (req, res) => {
 			return project.get({ plain: true });
 		});
 
-		console.log(projects);
-		res.render(`recent`, { projects, logged_in: req.session.logged_in });
+		res.render(`recent`, {
+			projects,
+			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
+		});
 	} catch (err) {
 		res.status(400).json(err);
 	}
 });
 
 router.get('/search', async (req, res) => {
-	const Op = sequelize.Op;
-	console.log('Entering the search function');
 	const search = req.query.search;
-	console.log(search);
-
 	try {
-		const findUser = User.findAll({ where: {} });
-	} catch (error) {}
-	res.status(200).json(search);
+		const findUser = await User.findAll({
+			attributes: ['name', 'id'],
+			where: {
+				name: {
+					[Op.like]: `%${search}%`,
+				},
+			},
+		});
+
+		const userData = findUser.map((user) => {
+			return user.get({ plain: true });
+		});
+		const findProject = await Project.findAll({
+			include: [
+				{
+					model: Reaction,
+					attributes: ['type', 'user_id'],
+				},
+			],
+			where: {
+				project_name: { [Op.like]: `%${search}%` },
+			},
+		});
+
+		const projectData = findProject.map((project) => {
+			return project.get({ plain: true });
+		});
+
+		res.render('search', {
+			users: userData,
+			projects: projectData,
+			profileImage: req.session.profile,
+		});
+	} catch (error) {
+		res.status(400).json({ message: "Can't find anything" });
+	}
+});
+
+router.get('/create', withAuth, (req, res) => {
+	res.render('createproject', { profileImage: req.session.profile });
 });
 module.exports = router;
 
