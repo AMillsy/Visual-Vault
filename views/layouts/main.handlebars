@@ -28,6 +28,7 @@
 				</button>
         {{else}}
         <button onclick="window.location.href='/profile'">Profile</button>
+        <button id="logout">Log Out</button>
         {{/unless}}
 			</nav>
 		</header>
@@ -47,6 +48,7 @@
     <!-- Render script for logged in users only -->
     {{#if logged_in}}
       <script src='/js/logout.js'></script>
+      <script src='../js/reactions_interactivity.js'></script>
     {{/if}}
   </body>
 

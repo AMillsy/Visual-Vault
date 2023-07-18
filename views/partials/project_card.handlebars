@@ -1,6 +1,8 @@
-<a href='/project/{{id}}' id={{id}} class='project'>
-	<h3>{{project_name}}</h3>
-	<p>{{caption}}</p>
-	<p class='date'>Updated: {{format_date updatedAt}}</p>
-	{{> reaction_buttons}}
-</a>
+<div class='project'>
+	<a href='/project/{{id}}' id={{id}}>
+		<h3>{{project_name}}</h3>
+		<p>{{caption}}</p>
+		<p class='date'>Updated: {{format_date updatedAt}}</p>
+	</a>
+		{{> reaction_buttons}}
+</div>

@@ -77,8 +77,13 @@ module.exports = {
 				return; //Basic social image, or no image at all
 		}
 	},
-
 	getGithubLink: (githubName) => {
 		return `https://github.com/${githubName}`;
 	},
+	active_reaction: (reactions) => {
+		console.log(reactions);		
+		
+		//set this to return "active-reaction" if the logged in user created it.
+		// if ( reactions.some() )
+	}
 };

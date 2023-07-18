@@ -2,7 +2,7 @@ const { Reaction } = require('../../models');
 const router = require('express').Router();
 
 router.post(`/`, async (req, res) => {
-    const { type, user_id, project_id } = req.body
+    const { type, project_id } = req.body;
     try {
 		const newReaction = await Reaction.create({
 			type: type,
@@ -18,9 +18,12 @@ router.post(`/`, async (req, res) => {
 
 
 router.get(`/`, async (req, res) => {
+    const { project_id } = req.body;
     try {
         const reactionData = await Reaction.findAll({
-            where: { project_id: id },
+            where: { 
+                project_id: project_id 
+            },
         });
 
         if (!reactionData) {
@@ -29,16 +32,20 @@ router.get(`/`, async (req, res) => {
 		}
 
 		res.status(200).json(reactionData);
+        console.log(res);
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
 router.delete('/', async (req, res) => {
+    const { type, project_id } = req.body;
     try {
         const reactionData = await Reaction.destroy({
             where: {
-                id: req.params.id,
+                type: type,
+                user_id: req.session.user_id,
+                project_id: project_id,
             },
         });
 

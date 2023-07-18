@@ -312,6 +312,10 @@ footer {
   	margin: 20px;
 }
 
+.active-reaction {
+	background-color: #0088cc;
+}
+
 p {
 	display: flex;
   	justify-content: left;
