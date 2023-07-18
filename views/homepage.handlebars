@@ -29,8 +29,7 @@
 <!-- Loop over each object in the projects array -->
 <article class="feature_projects">
 <h2 class="feature_text">Featured User Projects</h2>
-
 {{#each projects as |project|}}
-{{> project_card}}
+{{> project_card user=../userId}}
 {{/each}}
 </article>
