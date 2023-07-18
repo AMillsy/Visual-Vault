@@ -1,3 +1,5 @@
+const exphbs = require('express-handlebars');
+
 module.exports = {
 	format_date: (date) => {
 		const projectDate = new Date(date);
@@ -24,48 +26,62 @@ module.exports = {
 	return_string: (data) => {
 		return JSON.stringify(data);
 	},
-	count_thumbs: (reactions) => {
-		if (!reactions) return 0;
+	button_thumbs: (reactions, userId) => {
 		let thumbs_count = 0;
+		let active = '';
 		for (let i = 0; i < reactions.length; i++) {
 			if (reactions[i].type === 'thumbs-up') {
 				thumbs_count += 1;
+				if (reactions[i].user_id === userId) {
+					active = 'active-reaction';
+				}
 			}
 		}
-		return thumbs_count;
-	},
-	count_stars: (reactions) => {
-		if (!reactions) return 0;
-		let stars_count = 0;
 
+		var buttonString = `<button class="reaction-button thumbs_up bi bi-hand-thumbs-up-fill ${active}">${thumbs_count}</button>`
+
+		return buttonString;
+	},
+	button_stars: (reactions, userId) => {
+		let stars_count = 0;
+		let active = '';
 		for (let i = 0; i < reactions.length; i++) {
 			if (reactions[i].type === 'stars') {
 				stars_count += 1;
+				if (reactions[i].user_id === userId) {
+					active = 'active-reaction';
+				}
 			}
 		}
-		return stars_count;
-	},
-	count_heart: (reactions) => {
-		if (!reactions) return 0;
-		let heart_count = 0;
 
+		return `<button class="reaction-button stars bi bi-stars ${active}">${stars_count}
+    </button>`;
+	},
+	button_heart: (reactions, userId) => {
+		let heart_count = 0;
+		let active = '';
 		for (let i = 0; i < reactions.length; i++) {
 			if (reactions[i].type === 'heart') {
 				heart_count += 1;
+				if (reactions[i].user_id === userId) {
+					active = 'active-reaction';
+				}
 			}
 		}
-		return heart_count;
+		return `<button class="reaction-button heart bi bi-heart-fill ${active}">${heart_count}</button>`;
 	},
-	count_bullseye: (reactions) => {
-		if (!reactions) return 0;
+	button_bullseye: (reactions, userId) => {
 		let bullseye_count = 0;
-
+		let active = '';
 		for (let i = 0; i < reactions.length; i++) {
 			if (reactions[i].type === 'bullseye') {
 				bullseye_count += 1;
+				if (reactions[i].user_id === userId) {
+					active = 'active-reaction';
+				}
 			}
 		}
-		return bullseye_count;
+		return `<button class="reaction-button bullseye bi bi-bullseye ${active}">${bullseye_count}</button>`;
 	},
 	getSocialImage: (social) => {
 		switch (social) {
@@ -86,9 +102,13 @@ module.exports = {
 	getGithubLink: (githubName) => {
 		return `https://github.com/${githubName}`;
 	},
-	active_reaction: (reactions) => {
-		console.log(reactions);		
-		
+	active_reaction: (reactions, userId) => {
+		var newClass = '';
+		for (let i = 0; i < reactions.length; i++) {
+			if (reactions[i].user_id === userId) {
+				newClass = 'active-reaction';
+			}
+		}
 		//set this to return "active-reaction" if the logged in user created it.
 		// if ( reactions.some() )
 	}

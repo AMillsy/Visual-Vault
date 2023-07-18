@@ -28,6 +28,7 @@ router.get('/', async (req, res) => {
 			projects,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
+			userId: req.session.user_id
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -71,6 +72,7 @@ router.get('/project/:id', async (req, res) => {
 			project: project,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
+			userId: req.session.user_id
 		});
 	} catch (error) {
 		res.status(500).json({ message: `AN ERROR HAS OCCURRED` });
@@ -96,6 +98,7 @@ router.get('/profile', withAuth, async (req, res) => {
 			...user,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
+			userId: req.session.user_id
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -149,6 +152,7 @@ router.get(`/recent`, withAuth, async (req, res) => {
 			projects,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
+			userId: req.session.user_id
 		});
 	} catch (err) {
 		res.status(400).json(err);
@@ -190,6 +194,7 @@ router.get('/search', async (req, res) => {
 			users: userData,
 			projects: projectData,
 			profileImage: req.session.profile,
+			userId: req.session.user_id
 		});
 	} catch (error) {
 		res.status(400).json({ message: "Can't find anything" });

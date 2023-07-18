@@ -1,14 +1,6 @@
 <div class="reaction-buttons" data-id='{{project.id}}'>
-    <button class="reaction-button thumbs_up bi bi-hand-thumbs-up-fill {{active_reaction project.reactions}}">
-        {{count_thumbs project.reactions}}
-    </button>
-    <button class="reaction-button stars bi bi-stars {{active_reaction project.reactions}}">
-        {{count_stars project.reactions}}
-    </button>
-    <button class="reaction-button heart bi bi-heart-fill {{active_reaction project.reactions}}">
-        {{count_heart project.reactions}}
-    </button>
-    <button class="reaction-button bullseye bi bi-bullseye {{active_reaction project.reactions}}">
-        {{count_bullseye project.reactions}}
-    </button>
+    {{{button_thumbs project.reactions userId}}}
+    {{{button_stars project.reactions userId}}}
+    {{{button_heart project.reactions userId}}}
+    {{{button_bullseye project.reactions userId}}}
 </div>
