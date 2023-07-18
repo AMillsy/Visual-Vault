@@ -13,13 +13,21 @@
 	<div id="profile-preview"></div>
 </div>
 
-{{#if socials}}
+
 <div class="socials-container">
+	<h3 class="social-title">Socials</h3>
+	{{#if socials}}
 	{{#each socials as |social|}}
 	{{> socialCard}}
 	{{/each}}
+	{{/if}}
+	<!-- Creat new social links-->
+	<div id="add-socials">
+		
+		<button class="social-btn social-add">+</button>
+	</div>
 </div>
-{{/if}}
+
 	
 </div>
 	{{#if projects.length}}

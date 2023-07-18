@@ -74,13 +74,16 @@ router.post(`/image`, uploadUsers.single(`image`), async (req, res, next) => {
 			Bucket: process.env.AWS_BUCKET,
 			Key: profile_image_key,
 		};
-		s3.deleteObject(params, function (err, data) {
-			if (err)
-				res.status(400).json({
-					message: 'Error removing profile image',
-				});
-			else console.log(data);
-		});
+		if (profile_image_key) {
+			s3.deleteObject(params, function (err, data) {
+				if (err)
+					res.status(400).json({
+						message: 'Error removing profile image',
+					});
+				else console.log(data);
+			});
+		}
+
 		const userData = await User.update(
 			{ profile_image_link: location, profile_image_key: key },
 			{ where: { id: req.session.user_id } }

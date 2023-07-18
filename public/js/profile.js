@@ -1,6 +1,9 @@
 const profile_preview = document.querySelector(`#profile-preview`);
 const profile_picture = document.querySelector(`#profile-picture`);
 const profile_form = document.querySelector('#profile-form');
+const social_btn = document.querySelector(`.social-add`);
+const socials_add = document.querySelector(`.social-create`);
+const socials_create_container = document.querySelector('#add-socials');
 
 profile_form.addEventListener('submit', async function (e) {
 	e.preventDefault();
@@ -49,6 +52,51 @@ profile_picture.onchange = function () {
 	}
 };
 
-document
-	.querySelector('.project-list')
-	.addEventListener('click', delButtonHandler);
+// document
+// 	.querySelector('.project-list')
+// 	.addEventListener('click', delButtonHandler);
+
+social_btn.addEventListener('click', function (e) {
+	console.log(`Click`);
+	const html = `<div class="social-create-container">
+		<select id="socials" name="socials">
+  			<option value="instagram">Instagram</option>
+ 			<option value="twitter">Twitter</option>
+  			<option value="linkedin">LinkedIn</option>
+  			<option value="facebook">Facebook</option>
+		</select>
+		<input type="text" name="social-link" class="social-link-input" placeholder="Enter social link">
+		<button class="social-btn social-create">Add</button>
+		</div>
+		`;
+
+	socials_create_container.insertAdjacentHTML(`afterbegin`, html);
+});
+
+socials_create_container.addEventListener('click', async function (e) {
+	if (!e.target.classList.contains('social-create')) return;
+	console.log(e.target);
+	const el = e.target;
+	const container = el.closest('.social-create-container');
+	const socialType = container.children[0].value;
+	const link = container.children[1].value;
+	console.log(container);
+	console.log(socialType);
+	console.log(link);
+
+	const response = await fetch(`/api/socials`, {
+		method: 'POST',
+		body: JSON.stringify({
+			social_type: socialType,
+			external_link: link,
+		}),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (response.ok) {
+		container.remove();
+		return;
+	}
+});
