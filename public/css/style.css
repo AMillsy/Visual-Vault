@@ -9,19 +9,19 @@ header,
 	border-top: 5px black solid;
 	display: flex;
 	flex-direction: column;
-	background-color: #301934;
+	background-color: white;
 }
 .feature_text {
 	padding: 10px;
 	text-align: center;
-	color: white;
+	color: #3d0d6f;
 }
 .project {
 	position: relative;
 	min-height: 100px;
 	margin: 5px;
 	color: white;
-	background-color: #121212;
+	background-color: #3d0d6f;
 }
 
 .no-button {
@@ -54,31 +54,32 @@ body {
 }
 
 .logo {
-	max-width: 250px;
+	max-width: 275px;
 	max-height: 180px;
 	margin: -10px;
 }
 
-header {
+header { 
+	background-color: white;
+	height: 200px;
 	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	min-height: 150px;
-	background-color: rgba(0, 136, 204, 0.8);
-	color: white;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
 	text-align: center;
-	position: relative;
+
 }
 
 nav {
 	margin: 30px;
 	width: 100%;
 }
+
 .navigation button {
 	position: relative;
 	margin-left: 10px;
 	background-color: #ffffff;
-	color: #0088cc;
+	color: #3d0d6f;
 	border: none;
 	border-radius: 4px;
 	padding: 8px 15px;
@@ -88,7 +89,7 @@ nav {
 }
 
 .navigation button:hover {
-	background-color: #0088cc;
+	background-color: #3d0d6f;
 	color: white;
 }
 
@@ -97,7 +98,7 @@ nav {
 }
 
 footer {
-	background-color: rgba(0, 136, 204, 0.8);
+	background-color: #fff;
 	color: white;
 	padding: 10px;
 	text-align: center;
@@ -124,17 +125,24 @@ footer {
 }
 
 .signup-form button {
-	background-color: #0088cc;
-	color: white;
+	background-color: white;
+	color: black;
 	border: none;
 	border-radius: 4px;
 	padding: 8px 12px;
 	font-size: 14px;
 	cursor: pointer;
+	margin-bottom: 30px;
+}
+
+.signup-form button:hover {
+	background-color: #521b5c;
+	color: white;
 }
 
 .introduction {
-	background-image: url('/images/background.png');
+	background-image: url('/images/coding\ background.jpg');
+	background-size: cover;
 	padding-top: 10px;
 	display: flex;
 	justify-content: center;
@@ -173,12 +181,14 @@ footer {
 	border-radius: 5px;
 	border: none;
 	width: 40%;
+	color: #3d0d6f;
+	border: 2px solid #3d0d6f;
 }
 
 .search-bar button {
 	font-size: 17px;
 	padding: 10px 20px;
-	background-color: #555;
+	background-color: #3d0d6f;
 	color: #fff;
 	border: none;
 	border-radius: 5px;
@@ -187,7 +197,7 @@ footer {
 }
 
 .search-bar button:hover {
-	background-color: #777;
+	background-color: #872c97;
 }
 /*Test styles*/
 
