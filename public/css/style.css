@@ -329,9 +329,15 @@ footer {
 	justify-content: left;
 	margin: 20px;
 }
+
+.active-reaction {
+	background-color: #0088cc;
+}
+
 .user-card {
 	background-color: black;
 }
+
 p {
 	display: flex;
 	justify-content: left;

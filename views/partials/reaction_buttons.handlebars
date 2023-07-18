@@ -1,18 +1,6 @@
-<div class="reaction-buttons">
-    <button class="reaction-span" id="thumbs_up">
-        <i class="bi bi-hand-thumbs-up-fill"></i> 
-        {{count_thumbs reactions}}
-    </button>
-    <button class="reaction-span" id="stars">
-        <i class="bi bi-stars"></i> 
-        {{count_stars reactions}}
-    </button>
-    <button class="reaction-span" id="heart">
-        <i class="bi bi-heart-fill"></i> 
-        {{count_heart reactions}}
-    </button>
-    <button class="reaction-span" id="bullseye">
-        <i class="bi bi-bullseye"></i> 
-        {{count_bullseye reactions}}
-    </button>
+<div class="reaction-buttons" data-id='{{id}}'>
+    {{{button_thumbs reactions user_id}}}
+    {{{button_stars reactions user_id}}}
+    {{{button_heart reactions user_id}}}
+    {{{button_bullseye reactions user_id}}}
 </div>
