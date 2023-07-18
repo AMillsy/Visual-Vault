@@ -42,6 +42,7 @@ router.post('/login', async (req, res) => {
 		req.session.save(() => {
 			req.session.user_id = userData.id;
 			req.session.logged_in = true;
+			req.session.profile = userData.profile_image_link;
 
 			res.json({ user: userData, message: 'You are now logged in!' });
 		});
@@ -61,34 +62,41 @@ router.post('/logout', (req, res) => {
 });
 
 router.post(`/image`, uploadUsers.single(`image`), async (req, res, next) => {
-	console.log('Getting in here');
 	if (!req.file) return res.status(400).json({ message: 'No image sent' });
-	console.log(req.session.user_id);
+
 	const { key, location } = req.file;
-	console.log(req.file);
-	console.log(location);
+
 	try {
 		const getUser = await User.findByPk(req.session.user_id);
 		const getData = getUser.get({ plain: true });
 		const { profile_image_key } = getData;
-		console.log(profile_image_key);
 		const params = {
 			Bucket: process.env.AWS_BUCKET,
 			Key: profile_image_key,
 		};
-		s3.deleteObject(params, function (err, data) {
-			if (err)
-				res.status(400).json({
-					message: 'Error removing profile image',
-				});
-			else console.log(data);
-		});
+		if (profile_image_key) {
+			s3.deleteObject(params, function (err, data) {
+				if (err)
+					res.status(400).json({
+						message: 'Error removing profile image',
+					});
+				else console.log(data);
+			});
+		}
+
 		const userData = await User.update(
 			{ profile_image_link: location, profile_image_key: key },
 			{ where: { id: req.session.user_id } }
 		);
+		const getUserData = await User.findByPk(req.session.user_id, {
+			raw: true,
+		});
 
-		res.status(200).json(userData);
+		req.session.save(() => {
+			req.session.profile = getUserData.profile_image_link;
+
+			res.status(200).json(userData);
+		});
 	} catch (error) {
 		res.status(200).json(error);
 	}

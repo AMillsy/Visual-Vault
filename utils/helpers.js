@@ -70,14 +70,16 @@ module.exports = {
 	},
 	getSocialImage: (social) => {
 		switch (social) {
+			case `github`:
+				return `./images/github.png`;
 			case `twitter`:
-				return; //twitter image saved locally "/images/twitter.png"
+				return `./images/twitter.png`; //twitter image saved locally "/images/twitter.png"
 			case 'instagram':
-				break;
+				return `./images/instagram.png`;
 			case 'facebook':
-				break;
+				return `./images/facebook.png`;
 			case 'linkedin':
-				break;
+				return `./images/linkedin.png`;
 			default:
 				return; //Basic social image, or no image at all
 		}
