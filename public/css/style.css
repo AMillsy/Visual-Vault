@@ -325,6 +325,20 @@ h2 {
 	justify-content: left;
 	margin: 20px;
 }
+.profile_link {
+	margin: 20px;
+	right: 0;
+	top: 0;
+	position: absolute;
+}
+.profile-image-nav {
+	object-fit: cover;
+	max-width: 90px;
+	max-height: 90px;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+}
 
 @keyframes fade {
 	from {

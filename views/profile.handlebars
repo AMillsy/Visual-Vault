@@ -9,83 +9,14 @@
 		<input type="file" name="profile-picture" id="profile-picture">
 		<button type='submit' class='btn btn-primary'>Submit</button>
 	</form>
-	<div id="profile-preview"></div>
-	
-			
-
 </div>
-<div class='row mt-4'>
-	<div class='col-md-6'>
-		<h3>Create a New Project:</h3>
-
-		<form class='form new-project-form' enctype="multipart/form-data" >
-			<div class='form-group'>
-				<label for='project-name'>project name: *Needed</label>
-				<input
-					class='form-input'
-					type='text'
-					id='project-name'
-					name='project-name'
-				/>
-			</div>
-			<div class='form-group'>
-				<label for='project-github'>Github Link:</label>
-				<input
-					class='form-input'
-					id='project-github'
-					name='project-github'
-					placeholder="https://github.com/User/Project"
-				></input>
-			</div>
-			<div class='form-group'>
-				<label for='project-deployed'>Deployed Link:</label>
-				<input
-					class='form-input'
-					id='project-deployed'
-					name='project-deployed'
-					placeholder="https://DeployedLink.com"
-				></input>
-			</div>
-			<div class='form-group'>
-				<label for='project-caption'>caption: *Needed</label>
-				<input
-					class='form-input'
-					type='text'
-					id='project-caption'
-					name='project-caption'
-					placeholder='Something Captivating'
-				/>
-			</div>
-			<div class='form-group'>
-				<label for='project-desc'>description:</label>
-				<textarea
-					class='form-input'
-					id='project-desc'
-					name='project-desc'
-				></textarea>
-			</div>
-			
-			<div class="form-group">
-				<label for="project-image">Select Images:</label>
-				<input enctype="multipart/form-data" 
-				type="file" 
-				id="project-images" 
-				name="images"  
-				accept='image/png, image/gif, image/jpeg' multiple>
-			</div>
-			<div class="preview-container">
-				
-			</div>
-			<div class='form-group'>
-				<button type='submit' class='btn btn-primary'>Create</button>
-			</div>
-		</form>
-	</div>
-
+	
+<div id="profile-preview"></div>
+	
+</div>
 	{{#if projects.length}}
-		<div class='col-md-6 project-list'>
-			<h3>Current Projects:</h3>
-
+	<div class='col-md-6 project-list'>
+		<h3>Current Projects:</h3>
 			{{#each projects as |project|}}
 				<div class='row mb-2'>
 					<div class='col-md-8'>

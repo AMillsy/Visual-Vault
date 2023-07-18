@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
 		res.render('homepage', {
 			projects,
 			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -69,6 +70,7 @@ router.get('/project/:id', async (req, res) => {
 		res.render('project', {
 			project: project,
 			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
 		});
 	} catch (error) {
 		res.status(500).json({ message: `AN ERROR HAS OCCURRED` });
@@ -89,10 +91,11 @@ router.get('/profile', withAuth, async (req, res) => {
 		});
 
 		const user = userData.get({ plain: true });
-
+		console.log(req.session.profile);
 		res.render('profile', {
 			...user,
 			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -142,18 +145,18 @@ router.get(`/recent`, withAuth, async (req, res) => {
 			return project.get({ plain: true });
 		});
 
-		console.log(projects);
-		res.render(`recent`, { projects, logged_in: req.session.logged_in });
+		res.render(`recent`, {
+			projects,
+			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
+		});
 	} catch (err) {
 		res.status(400).json(err);
 	}
 });
 
 router.get('/search', async (req, res) => {
-	console.log('Entering the search function');
 	const search = req.query.search;
-	console.log(search);
-
 	try {
 		const findUser = await User.findAll({
 			attributes: ['name', 'id'],
@@ -183,11 +186,18 @@ router.get('/search', async (req, res) => {
 			return project.get({ plain: true });
 		});
 
-		console.log(findUser, findProject);
-		res.render('search', { users: userData, projects: projectData });
+		res.render('search', {
+			users: userData,
+			projects: projectData,
+			profileImage: req.session.profile,
+		});
 	} catch (error) {
 		res.status(400).json({ message: "Can't find anything" });
 	}
+});
+
+router.get('/create', withAuth, (req, res) => {
+	res.render('createproject', { profileImage: req.session.profile });
 });
 module.exports = router;
 
