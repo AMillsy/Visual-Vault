@@ -21,7 +21,13 @@ header,
 	min-height: 100px;
 	margin: 5px;
 	color: white;
-	background-color: #3d0d6f;
+	background-image: url('/images/project\ background.jpg');
+	background-size: cover;
+}
+
+.project-name {
+	margin-left: 1%;
+	margin-top: 1%;
 }
 
 .no-button {
@@ -145,9 +151,9 @@ footer {
 	background-size: cover;
 	padding-top: 10px;
 	display: flex;
-	justify-content: center;
+	justify-content: left;
 	flex-direction: column;
-	align-items: center;
+	align-items: left;
 	width: 100%;
 	min-height: 600px;
 }
