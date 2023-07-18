@@ -325,6 +325,13 @@ h2 {
 	justify-content: left;
 	margin: 20px;
 }
+.profile-title {
+	margin: 20px;
+	display: flex;
+}
+.profile_container {
+	margin: 20px;
+}
 .profile_link {
 	margin: 20px;
 	right: 0;
@@ -340,6 +347,25 @@ h2 {
 	border-radius: 50%;
 }
 
+.social_containers {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.social-img-con {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 2px solid black;
+	z-index: 100;
+}
+
+.social-img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	z-index: -1;
+}
 @keyframes fade {
 	from {
 		opacity: 0.4;

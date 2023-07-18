@@ -1,17 +1,25 @@
 <div class='row'>
-	<div class='col-auto'>
+	<div class='col-auto profile-title'>
+		<img class="profile-image-nav" src="{{profileImage}}" alt="">
 		<h2>Welcome, {{name}}!</h2>
 	</div>
 </div>
 <div class="profile_container">
-	<h3>Add a profile picture</h3>
+	<h3>Add a new profile picture</h3>
 	<form action="#" id="profile-form">
 		<input type="file" name="profile-picture" id="profile-picture">
 		<button type='submit' class='btn btn-primary'>Submit</button>
 	</form>
+	<div id="profile-preview"></div>
 </div>
-	
-<div id="profile-preview"></div>
+
+{{#if socials}}
+<div class="socials-container">
+	{{#each socials as |social|}}
+	{{> socialCard}}
+	{{/each}}
+</div>
+{{/if}}
 	
 </div>
 	{{#if projects.length}}
