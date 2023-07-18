@@ -26,7 +26,6 @@ module.exports = {
 	},
 	count_thumbs: (reactions) => {
 		let thumbs_count = 0;
-		console.log(reactions);
 		for (let i = 0; i < reactions.length; i++) {
 			if (reactions[i].type === 'thumbs-up') {
 				thumbs_count += 1;
