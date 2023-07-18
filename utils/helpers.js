@@ -25,6 +25,7 @@ module.exports = {
 		return JSON.stringify(data);
 	},
 	count_thumbs: (reactions) => {
+		if (!reactions) return 0;
 		let thumbs_count = 0;
 		console.log(reactions);
 		for (let i = 0; i < reactions.length; i++) {
@@ -35,6 +36,7 @@ module.exports = {
 		return thumbs_count;
 	},
 	count_stars: (reactions) => {
+		if (!reactions) return 0;
 		let stars_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {
@@ -45,6 +47,7 @@ module.exports = {
 		return stars_count;
 	},
 	count_heart: (reactions) => {
+		if (!reactions) return 0;
 		let heart_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {
@@ -55,6 +58,7 @@ module.exports = {
 		return heart_count;
 	},
 	count_bullseye: (reactions) => {
+		if (!reactions) return 0;
 		let bullseye_count = 0;
 
 		for (let i = 0; i < reactions.length; i++) {

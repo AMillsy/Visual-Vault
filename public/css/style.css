@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
 
 header,
 .project:not(:last-child) {
@@ -324,22 +324,23 @@ footer {
 
 .reaction-buttons {
 	display: flex;
-  	justify-content: left;
-  	margin: 20px;
+	justify-content: left;
+	margin: 20px;
 }
-
+.user-card {
+	background-color: black;
+}
 p {
 	display: flex;
-  	justify-content: left;
-  	margin: 20px;
+	justify-content: left;
+	margin: 20px;
 }
 
 h2 {
 	display: flex;
-  	justify-content: left;
-  	margin: 20px;
+	justify-content: left;
+	margin: 20px;
 }
-
 
 @keyframes fade {
 	from {
