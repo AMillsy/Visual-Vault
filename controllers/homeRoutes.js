@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 				},
 				{
 					model: User,
-					attributes: ['id', 'name'],
+					attributes: ['id', 'name', 'profile_image_link'],
 				},
 			],
 		});
@@ -93,8 +93,81 @@ router.get('/profile', withAuth, async (req, res) => {
 		});
 
 		const user = userData.get({ plain: true });
-		console.log(user);
 		res.render('profile', {
+			...user,
+			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
+			userId: req.session.user_id,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+router.get('/profile/:id', async (req, res) => {
+	try {
+		// Find user based on the url parameter ID
+		const userData = await User.findByPk(req.params.id, {
+			attributes: { exclude: ['password'] },
+			include: [
+				{ model: Social },
+				{
+					model: Project,
+					include: [
+						{
+							model: Reaction,
+							attributes: ['type', 'user_id'],
+						},
+					],
+				},
+			],
+		});
+
+		if (!userData) {
+			return res
+				.status(400)
+				.json({ message: 'No user found by that id' });
+		}
+
+		const user = userData.get({ plain: true });
+		res.render('viewprofile', {
+			...user,
+			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
+			userId: req.session.user_id,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+router.get('/profile/:id', async (req, res) => {
+	try {
+		// Find user based on the url parameter ID
+		const userData = await User.findByPk(req.params.id, {
+			attributes: { exclude: ['password'] },
+			include: [
+				{ model: Social },
+				{
+					model: Project,
+					include: [
+						{
+							model: Reaction,
+							attributes: ['type', 'user_id'],
+						},
+					],
+				},
+			],
+		});
+
+		if (!userData) {
+			return res
+				.status(400)
+				.json({ message: 'No user found by that id' });
+		}
+
+		const user = userData.get({ plain: true });
+		res.render('viewprofile', {
 			...user,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
@@ -203,8 +276,9 @@ router.get('/search', async (req, res) => {
 
 router.get('/create', withAuth, (req, res) => {
 	res.render('createproject', {
-		profileImage: req.session.profile,
 		logged_in: req.session.logged_in,
+		profileImage: req.session.profile,
+		userId: req.session.user_id,
 	});
 });
 module.exports = router;
