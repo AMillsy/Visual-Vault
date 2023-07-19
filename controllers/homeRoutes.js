@@ -105,6 +105,36 @@ router.get('/profile', withAuth, async (req, res) => {
 	}
 });
 
+router.get('/profile/:id', async (req, res) => {
+	try {
+		// Find user based on the url parameter ID
+		const userData = await User.findByPk(req.params.id, {
+			attributes: { exclude: ['password'] },
+			include: [
+				{ model: Social },
+				{ model: Project,
+				include: [
+					{
+						model: Reaction,
+						attributes: ['type', 'user_id'],
+					}
+				]}
+			],
+		});
+
+		const user = userData.get({ plain: true });
+		console.log(user);
+		res.render('profile', {
+			...user,
+			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
+			userId: req.session.user_id
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.get('/login', (req, res) => {
 	// If the user is already logged in, redirect the request to another route
 	if (req.session.logged_in) {
