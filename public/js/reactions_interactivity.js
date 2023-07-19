@@ -1,13 +1,15 @@
-const reactionButtonEls = document
+const arrayReactionButtonEls = document
 .querySelectorAll('button.reaction-button');
 
 const reactionHandler = async (event) => {
 	event.preventDefault();
-    
-    project_id = event.srcElement.closest('.reaction-buttons').getAttribute('data-id');
+
+    const clickedButtonEl = event.srcElement;
+    var number = parseInt(clickedButtonEl.innerText);
+    const project_id = clickedButtonEl.closest('.reaction-buttons').getAttribute('data-id');
     var type = "";
     
-    var listOfClasses = event.srcElement.classList;
+    var listOfClasses = clickedButtonEl.classList;
     // sets type to whats in class
     switch ( true ) {
         case listOfClasses.contains('thumbs_up'):
@@ -27,12 +29,15 @@ const reactionHandler = async (event) => {
             break;        
 
         default:
+            alert('not a reaction button that was clicked... not sure how you saw this alert...');
             break;
     };
     
-    if (event.srcElement.classList.contains('active-reaction')) {
+    if (clickedButtonEl.classList.contains('active-reaction')) {
         // remove class that makes it appear active
-        event.srcElement.classList.remove('active-reaction');
+        clickedButtonEl.classList.remove('active-reaction');
+        number -= 1;
+        clickedButtonEl.innerText(number);
 
         // remove reaction from db
         const response = await fetch('/api/reactions', {
@@ -52,7 +57,9 @@ const reactionHandler = async (event) => {
 
     } else {
         // add class that makes it appear active
-        event.srcElement.classList.add('active-reaction');
+        clickedButtonEl.classList.add('active-reaction');
+        number += 1;
+        clickedButtonEl.innerText(number);
 
         // add reaction to db
         const response = await fetch('/api/reactions', {
@@ -73,4 +80,6 @@ const reactionHandler = async (event) => {
     
 };
 
-reactionButtonEls.forEach( (button) => button.addEventListener('click', reactionHandler));
+arrayReactionButtonEls.forEach( (button) => {
+        button.addEventListener('click', reactionHandler);
+    });
