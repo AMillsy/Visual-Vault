@@ -122,9 +122,13 @@ router.get('/profile/:id', async (req, res) => {
 			],
 		});
 
+		if (!userData) {
+			return res.status(400).json({ message: 'No user found by that id' });
+		}
+
 		const user = userData.get({ plain: true });
 		console.log(user);
-		res.render('profile', {
+		res.render('viewprofile', {
 			...user,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
@@ -232,7 +236,11 @@ router.get('/search', async (req, res) => {
 });
 
 router.get('/create', withAuth, (req, res) => {
-	res.render('createproject', { profileImage: req.session.profile });
+	res.render('createproject', { 
+		logged_in: req.session.logged_in,
+		profileImage: req.session.profile,
+		userId: req.session.user_id
+	});
 });
 module.exports = router;
 
