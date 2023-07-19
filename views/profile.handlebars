@@ -1,8 +1,9 @@
 <div class='row'>
 	<div class='col-auto profile-title'>
-		<img class="profile-image-nav" src="{{profileImage}}" alt="">
+		<img class="profile-image-nav" src="{{profile_image_link}}" alt="">
 		<h2>Welcome, {{name}}!</h2>
 	</div>
+	<a href="/profile/{{userId}}"><button class="btn btn-primary">View Profile</button></a>
 </div>
 <div class="profile_container">
 	<h3>Add a new profile picture</h3>
@@ -23,13 +24,13 @@
 	{{/if}}
 	<!-- Creat new social links-->
 	<div id="add-socials">
-		
 		<button class="social-btn social-add">+</button>
 	</div>
 </div>
 
 	
-</div>
+<div class="projects-container">
+	<h3><a href='/create'>Add a Project</a></h3>
 	{{#if projects.length}}
 	<div class='col-md-6 project-list'>
 		<h3>Current Projects:</h3>
