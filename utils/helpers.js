@@ -38,7 +38,7 @@ module.exports = {
 			}
 		}
 
-		var buttonString = `<button class="reaction-button thumbs_up bi bi-hand-thumbs-up-fill ${active}">${thumbs_count}</button>`
+		var buttonString = `<button class="reaction-button thumbs_up bi bi-hand-thumbs-up-fill ${active}">${thumbs_count}</button>`;
 
 		return buttonString;
 	},
@@ -111,5 +111,10 @@ module.exports = {
 		}
 		//set this to return "active-reaction" if the logged in user created it.
 		// if ( reactions.some() )
-	}
+	},
+	getProfileImage: (profileLink) => {
+		if (!profileLink) return './images/userIcon.png';
+
+		return profileLink;
+	},
 };

@@ -65,7 +65,7 @@ body {
 	margin: -10px;
 }
 
-header { 
+header {
 	background-color: white;
 	height: 200px;
 	display: flex;
@@ -73,7 +73,6 @@ header {
 	align-items: center;
 	font-size: 24px;
 	text-align: center;
-
 }
 
 nav {
@@ -160,6 +159,10 @@ footer {
 	min-height: 600px;
 }
 
+.profile-border {
+	border: 2px solid black;
+	border-radius: 50%;
+}
 .project-links {
 	display: flex;
 
@@ -431,6 +434,27 @@ h2 {
 }
 #socials {
 	width: 100px;
+}
+.profile-page {
+	display: flex;
+	justify-content: space-between;
+}
+.project-add {
+	width: 300px;
+	margin: 20px;
+}
+.profile-projects {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin: 20px;
+}
+.delete-project-con {
+	display: flex;
+	justify-content: space-between;
+}
+.profile-project-name {
+	padding-right: 20px;
 }
 @keyframes fade {
 	from {
