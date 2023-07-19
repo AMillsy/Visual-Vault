@@ -30,6 +30,6 @@
 <article class="feature_projects">
 <h2 class="feature_text">Featured User Projects</h2>
 {{#each projects as |project|}}
-{{> project_card user=../userId}}
+{{> project_card loggedInUser=../userId}}
 {{/each}}
 </article>

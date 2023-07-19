@@ -4,6 +4,11 @@
 		<p>{{caption}}</p>
 		<p class='date'>Updated: {{format_date updatedAt}}</p>
 	</a>
-		{{> reaction_buttons user_id=user}}
-	<span class="project-user">{{return_string}}</span>
+		{{> reaction_buttons loggedInUser=loggedInUser}}
+	<span class="project-user">
+		<a href="/profile/{{user.id}}" rel="author">
+			<img class="profile-image-nav" src="{{user.profile_image_link}}" alt="">
+			{{user.name}}
+		</a>
+	</span>
 </div>

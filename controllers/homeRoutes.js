@@ -14,7 +14,11 @@ router.get('/', async (req, res) => {
 				},
 				{
 					model: User,
-					attributes: ['id', 'name'],
+					attributes: [
+						'id', 
+						'name', 
+						'profile_image_link' 
+					],
 				},
 			],
 		});
