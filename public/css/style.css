@@ -58,6 +58,14 @@ header,
 	background-size: cover;
 }
 
+.project-page h2 {
+	Margin-left: 1.5%;
+}
+
+.project-user {
+	margin-left: 3%;
+}
+
 .user-id {
 	color: white;
 	font-size: 18px;
@@ -193,7 +201,6 @@ footer {
 }
 .project-links {
 	display: flex;
-
 	align-items: center;
 }
 
@@ -202,6 +209,7 @@ footer {
 	display: flex;
 	width: 60px;
 	height: 60px;
+	margin-left: 4%;
 }
 
 .socials {
@@ -359,8 +367,9 @@ footer {
 	display: flex;
 	margin: 20px;
 	justify-content: space-between;
-	margin-right: 85%;
+	margin-right:85%;
 	color: white;
+	margin-left: 2%;
 }
 
 .active-reaction {
@@ -381,7 +390,8 @@ p {
 h2 {
 	display: flex;
 	justify-content: left;
-	margin-left: 10px
+	margin-left: 20px;
+	margin-top: 10px;
 }
 
 .profile-title {
@@ -394,6 +404,7 @@ h2 {
 		rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+
 .profile_container {
 	margin: 20px;
 }
