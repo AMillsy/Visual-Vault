@@ -6,6 +6,8 @@ The challenge of this project was to work collaboratively as a team to create ou
 
 ## Acceptance Criteria
 
+This full stack application satisfies the following code requirements
+
 ```
 Application uses a Node and Express back end and uses both GET and POST routes for retrieving and adding new data.
 Application has a folder structure that meets the MVC paradigm and uses Handlebars.js as the template engine.
