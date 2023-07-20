@@ -86,15 +86,15 @@ module.exports = {
 	getSocialImage: (social) => {
 		switch (social) {
 			case `github`:
-				return `./images/github.png`;
+				return `../images/github.png`;
 			case `twitter`:
-				return `./images/twitter.png`; //twitter image saved locally "/images/twitter.png"
+				return `../images/twitter.png`; //twitter image saved locally "/images/twitter.png"
 			case 'instagram':
-				return `./images/instagram.png`;
+				return `../images/instagram.png`;
 			case 'facebook':
-				return `./images/facebook.png`;
+				return `../images/facebook.png`;
 			case 'linkedin':
-				return `./images/linkedin.png`;
+				return `../images/linkedin.png`;
 			default:
 				return; //Basic social image, or no image at all
 		}
@@ -116,5 +116,11 @@ module.exports = {
 		if (!profileLink) return '../images/userIcon.png';
 
 		return profileLink;
+	},
+
+	formatLink: (link) => {
+		if (link.includes('https://www')) return link;
+
+		return `https://www.${link}`;
 	},
 };
