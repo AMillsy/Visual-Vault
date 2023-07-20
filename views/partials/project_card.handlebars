@@ -5,5 +5,7 @@
 		<p class='date'>Updated: {{format_date updatedAt}}</p>
 	</a>
 		{{> reaction_buttons loggedInUser=loggedInUser}}
-		{{> project_user}}
+		{{#unless avoidProfile}}
+			{{> project_user}}
+		{{/unless}}
 </div>
