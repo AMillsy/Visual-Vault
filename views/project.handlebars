@@ -2,8 +2,8 @@
 	{{! SOCIAL MEDIA TAGS }}
 	{{! TITLE OF PROJECT }}
 	<h2>{{project.project_name}}</h2>
-	{{> project_reaction_buttons}}
-	{{> project_user}}
+	{{> reaction_buttons reactions=project.reactions id=project.id loggedInUser=userId}}
+	{{> project_user user=project.user}}
 
 	{{! LINK TO THE PROJECT }}
 	<div class='project-links'>
