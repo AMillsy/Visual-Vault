@@ -14,11 +14,7 @@ router.get('/', async (req, res) => {
 				},
 				{
 					model: User,
-					attributes: [
-						'id', 
-						'name', 
-						'profile_image_link' 
-					],
+					attributes: ['id', 'name', 'profile_image_link'],
 				},
 			],
 		});
@@ -32,7 +28,7 @@ router.get('/', async (req, res) => {
 			projects,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
-			userId: req.session.user_id
+			userId: req.session.user_id,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -76,7 +72,7 @@ router.get('/project/:id', async (req, res) => {
 			project: project,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
-			userId: req.session.user_id
+			userId: req.session.user_id,
 		});
 	} catch (error) {
 		res.status(500).json({ message: `AN ERROR HAS OCCURRED` });
@@ -101,7 +97,7 @@ router.get('/profile', withAuth, async (req, res) => {
 			...user,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
-			userId: req.session.user_id
+			userId: req.session.user_id,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -115,18 +111,22 @@ router.get('/profile/:id', async (req, res) => {
 			attributes: { exclude: ['password'] },
 			include: [
 				{ model: Social },
-				{ model: Project,
-				include: [
-					{
-						model: Reaction,
-						attributes: ['type', 'user_id'],
-					}
-				]}
+				{
+					model: Project,
+					include: [
+						{
+							model: Reaction,
+							attributes: ['type', 'user_id'],
+						},
+					],
+				},
 			],
 		});
 
 		if (!userData) {
-			return res.status(400).json({ message: 'No user found by that id' });
+			return res
+				.status(400)
+				.json({ message: 'No user found by that id' });
 		}
 
 		const user = userData.get({ plain: true });
@@ -134,7 +134,44 @@ router.get('/profile/:id', async (req, res) => {
 			...user,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
-			userId: req.session.user_id
+			userId: req.session.user_id,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+router.get('/profile/:id', async (req, res) => {
+	try {
+		// Find user based on the url parameter ID
+		const userData = await User.findByPk(req.params.id, {
+			attributes: { exclude: ['password'] },
+			include: [
+				{ model: Social },
+				{
+					model: Project,
+					include: [
+						{
+							model: Reaction,
+							attributes: ['type', 'user_id'],
+						},
+					],
+				},
+			],
+		});
+
+		if (!userData) {
+			return res
+				.status(400)
+				.json({ message: 'No user found by that id' });
+		}
+
+		const user = userData.get({ plain: true });
+		res.render('viewprofile', {
+			...user,
+			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
+			userId: req.session.user_id,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -188,7 +225,7 @@ router.get(`/recent`, withAuth, async (req, res) => {
 			projects,
 			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
-			userId: req.session.user_id
+			userId: req.session.user_id,
 		});
 	} catch (err) {
 		res.status(400).json(err);
@@ -229,8 +266,8 @@ router.get('/search', async (req, res) => {
 		res.render('search', {
 			users: userData,
 			projects: projectData,
+			logged_in: req.session.logged_in,
 			profileImage: req.session.profile,
-			userId: req.session.user_id
 		});
 	} catch (error) {
 		res.status(400).json({ message: "Can't find anything" });
@@ -238,10 +275,10 @@ router.get('/search', async (req, res) => {
 });
 
 router.get('/create', withAuth, (req, res) => {
-	res.render('createproject', { 
+	res.render('createproject', {
 		logged_in: req.session.logged_in,
 		profileImage: req.session.profile,
-		userId: req.session.user_id
+		userId: req.session.user_id,
 	});
 });
 module.exports = router;

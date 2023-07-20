@@ -6,10 +6,6 @@ const project_deployed = document.querySelector(`#project-deployed`);
 const project_images = document.querySelector(`#project-images`);
 const preview_container = document.querySelector(`.preview-container`);
 
-document
-	.querySelector('.new-project-form')
-	.addEventListener('submit', newFormHandler);
-
 const newFormHandler = async (event) => {
 	event.preventDefault();
 
@@ -56,10 +52,11 @@ const newFormHandler = async (event) => {
 
 	if (!imageResponse.ok) return; //Error message on the screen
 
-	window.location.reload();
+	window.location.replace('profile');
 };
 
 project_images.onchange = function () {
+	console.log('Is this working ');
 	const files = project_images.files;
 	preview_container.innerHTML = '';
 	if (files) {
@@ -70,3 +67,7 @@ project_images.onchange = function () {
 		}
 	}
 };
+
+document
+	.querySelector('.new-project-form')
+	.addEventListener('submit', newFormHandler);

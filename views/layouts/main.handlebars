@@ -27,7 +27,12 @@
 				</button>
         {{else}}
         <button id="logout">Log Out</button>
-        <a class="profile_link" href="/profile"><img  class="profile-image-nav" src="{{profileImage}}" alt="" srcset=""></a>
+        {{#if profileImage}}
+           <a class="profile_link" href="/profile"><img  class="profile-image-nav" src="{{profileImage}}" alt="" srcset=""></a>
+        {{else}}
+           <a class="profile_link profile-border" href="/profile"><img  class="profile-image-nav" src="./images/userIcon.png" alt="" srcset=""></a>
+        {{/if}}
+       
         {{/unless}}
 			</nav>
 		</header>

@@ -1,10 +1,11 @@
 <div class='row'>
 	<div class='col-auto profile-title'>
-		<img class="profile-image-nav" src="{{profile_image_link}}" alt="">
+		<img class="profile-image-nav" src="{{getProfileImage profileImage}}" alt="">
 		<h2>Welcome, {{name}}!</h2>
 	</div>
 	<a href="/profile/{{userId}}"><button class="btn btn-primary">View Profile</button></a>
 </div>
+<article class="profile-page">
 <div class="profile_container">
 	<h3>Add a new profile picture</h3>
 	<form action="#" id="profile-form">
@@ -12,10 +13,8 @@
 		<button type='submit' class='btn btn-primary'>Submit</button>
 	</form>
 	<div id="profile-preview"></div>
-</div>
 
-
-<div class="socials-container">
+	<div class="socials-container">
 	<h3 class="social-title">Socials</h3>
 	{{#if socials}}
 	{{#each socials as |social|}}
@@ -23,25 +22,27 @@
 	{{/each}}
 	{{/if}}
 	<!-- Creat new social links-->
-	<div id="add-socials">
-		<button class="social-btn social-add">+</button>
+		<div id="add-socials">
+		
+			<button class="social-btn social-add">+</button>
+		</div>
 	</div>
+
 </div>
 
-	
-<div class="projects-container">
-	<h3><a href='/create'>Add a Project</a></h3>
+<aside class="profile-projects">
+	<button class="social-btn project-add" onclick='href=window.location.replace("create")'>Create Projects</button>
 	{{#if projects.length}}
-	<div class='col-md-6 project-list'>
+	<div class='project-list'>
 		<h3>Current Projects:</h3>
 			{{#each projects as |project|}}
-				<div class='row mb-2'>
-					<div class='col-md-8'>
+				<div class='delete-project-con'>
+					<div class='profile-project-name'>
 						<h4><a
 								href='/project/{{project.id}}'
 							>{{project.project_name}}</a></h4>
 					</div>
-					<div class='col-md-4'>
+					<div class=''>
 						<button
 							class='btn btn-sm btn-danger'
 							data-id='{{project.id}}'
@@ -52,5 +53,7 @@
 		</div>
 	{{/if}}
 </div>
+</aside>
+</article>
 
 <script src='./js/profile.js'></script>
