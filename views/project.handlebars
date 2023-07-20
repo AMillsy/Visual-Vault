@@ -10,12 +10,16 @@
 
 	{{! LINK TO THE PROJECT }}
 	<div class='project-links'>
-		<a class='social_containers' href='{{project.repo_link}}'><img
-				class='socials'
+		{{#if project.repo_link}}
+		<a class='' href='{{project.repo_link}}'><img
+				class='social-img-con'
 				src='/images/github.png'
 				alt=''
 			/></a>
-		<a href='{{project.deployed_link}}'><img class="social_containers" src="/images/external.png" alt="" srcset=""></a>
+		{{/if}}
+		{{#if project.deployed_link}}
+		<a href='{{project.deployed_link}}'><img class="social-external-img" src="/images/external.png" alt="" srcset=""></a>
+		{{/if}}
 	</div>
 
 	 {{#if project.project_images}}
