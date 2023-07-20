@@ -123,4 +123,12 @@ module.exports = {
 
 		return `https://www.${link}`;
 	},
+	formatGithubLink: (link) => {
+		if (link.includes(`https://www`)) return link;
+
+		if (!link.includes(`https://github.com`))
+			return `https://github.com/${link}`;
+
+		return `https://www.${link}`;
+	},
 };
