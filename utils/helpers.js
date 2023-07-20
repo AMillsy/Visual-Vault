@@ -113,7 +113,7 @@ module.exports = {
 		// if ( reactions.some() )
 	},
 	getProfileImage: (profileLink) => {
-		if (!profileLink) return './images/userIcon.png';
+		if (!profileLink) return '../images/userIcon.png';
 
 		return profileLink;
 	},
