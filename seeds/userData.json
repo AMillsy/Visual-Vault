@@ -4,20 +4,20 @@
 		"email": "sal@hotmail.com",
 		"password": "password12345",
 		"github_username": "salthepal",
-		"profile_image": "https://picsum.photos/200%26300"
+		"profile_image_link": "https://picsum.photos/300"
 	},
 	{
 		"name": "Lernantino",
 		"email": "lernantino@gmail.com",
 		"password": "password12345",
 		"github_username": "tomjschuster",
-		"profile_image": "https://picsum.photos/200"
+		"profile_image_link": "https://picsum.photos/100"
 	},
 	{
 		"name": "Amiko",
 		"email": "amiko2k20@aol.com",
 		"password": "password12345",
 		"github_username": "drwpow",
-		"profile_image": "https://picsum.photos/200"
+		"profile_image_link": "https://picsum.photos/200"
 	}
 ]
