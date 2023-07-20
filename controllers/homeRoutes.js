@@ -160,7 +160,7 @@ router.get('/profile/:id', async (req, res) => {
 				},
 			],
 		});
-
+		console.log(userData);
 		if (!userData) {
 			return res
 				.status(400)
@@ -168,6 +168,7 @@ router.get('/profile/:id', async (req, res) => {
 		}
 
 		const user = userData.get({ plain: true });
+
 		res.render('viewprofile', {
 			...user,
 			logged_in: req.session.logged_in,
