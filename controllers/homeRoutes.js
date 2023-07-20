@@ -48,6 +48,7 @@ router.get('/project/:id', async (req, res) => {
 				{
 					model: User,
 					attributes: [
+						'id',
 						'name',
 						'github_username',
 						'profile_image_link',
