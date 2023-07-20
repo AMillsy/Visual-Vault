@@ -1,6 +1,10 @@
-<div class="project-user">
-    <a href="/profile/{{user.id}}" rel="author">
-        <img class="profile-image-nav" src="{{user.profile_image_link}}" alt="">
-        {{user.name}}
-    </a>
+<div class='project-user'>
+	<a href='/profile/{{user.id}}' rel='author'>
+		<img
+			class='profile-image-nav'
+			src='{{getProfileImage user.profile_image_link}}'
+			alt=''
+		/>
+		{{user.name}}
+	</a>
 </div>
