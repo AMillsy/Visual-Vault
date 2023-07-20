@@ -3,12 +3,10 @@
 	{{! TITLE OF PROJECT }}
 	<br />
 	<h2>{{project.project_name}}</h2>
-	{{> project_reaction_buttons}}
-	<br />
-	{{> project_user}}
-	<br />
 	{{> reaction_buttons reactions=project.reactions id=project.id loggedInUser=userId}}
+	<br />
 	{{> project_user user=project.user}}
+	<br />
 
 	{{! LINK TO THE PROJECT }}
 	<div class='project-links'>
