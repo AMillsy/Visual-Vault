@@ -4,6 +4,7 @@ const profile_form = document.querySelector('#profile-form');
 const social_btn = document.querySelector(`.social-add`);
 const socials_add = document.querySelector(`.social-create`);
 const socials_create_container = document.querySelector('#add-socials');
+const social_container = document.querySelector('.social-title');
 
 profile_form.addEventListener('submit', async function (e) {
 	e.preventDefault();
@@ -97,6 +98,44 @@ socials_create_container.addEventListener('click', async function (e) {
 
 	if (response.ok) {
 		container.remove();
+		createSocial(socialType, link);
 		return;
 	}
 });
+
+function createSocial(socialType, socialLink) {
+	const html = `<a href='${formatLink(socialLink)}'>
+	<div class='social-img-con'>
+		<img
+			class='social-img'
+			src='${getSocialImage(socialType)}'
+			alt='${socialType}'
+		/>
+	</div>
+</a>`;
+
+	social_container.insertAdjacentHTML('afterend', html);
+}
+
+const getSocialImage = (social) => {
+	switch (social) {
+		case `github`:
+			return `./images/github.png`;
+		case `twitter`:
+			return `./images/twitter.png`; //twitter image saved locally "/images/twitter.png"
+		case 'instagram':
+			return `./images/instagram.png`;
+		case 'facebook':
+			return `./images/facebook.png`;
+		case 'linkedin':
+			return `./images/linkedin.png`;
+		default:
+			return; //Basic social image, or no image at all
+	}
+};
+
+const formatLink = (link) => {
+	if (link.includes('https://www')) return link;
+
+	return `https://www.${link}`;
+};

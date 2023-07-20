@@ -27,9 +27,9 @@
         {{else}}
         <button id="logout">Log Out</button>
         {{#if profileImage}}
-           <a class="profile_link" href="/profile"><img  class="profile-image-nav" src="{{profileImage}}" alt="" srcset=""></a>
+           <a class="profile_link" href="/profile"><img  class="profile-image-nav" src=".{{getProfileImage profileImage}}" alt="" srcset=""></a>
         {{else}}
-           <a class="profile_link profile-border" href="/profile"><img  class="profile-image-nav" src="./images/userIcon.png" alt="" srcset=""></a>
+           <a class="profile_link profile-border" href="/profile"><img  class="profile-image-nav" src="../images/userIcon.png" alt="" srcset=""></a>
         {{/if}}
        
         {{/unless}}

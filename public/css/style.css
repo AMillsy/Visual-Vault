@@ -489,6 +489,11 @@ h2 {
 .profile-project-name {
 	padding-right: 20px;
 }
+
+.project-creation-page {
+	display: flex;
+	justify-content: center;
+}
 @keyframes fade {
 	from {
 		opacity: 0.4;
