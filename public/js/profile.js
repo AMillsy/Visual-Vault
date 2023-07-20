@@ -5,7 +5,8 @@ const social_btn = document.querySelector(`.social-add`);
 const socials_add = document.querySelector(`.social-create`);
 const socials_create_container = document.querySelector('#add-socials');
 const social_container = document.querySelector('.social-title');
-
+const github_form = document.querySelector('#github-link-form');
+const github_link = document.querySelector('#github-profile-link');
 profile_form.addEventListener('submit', async function (e) {
 	e.preventDefault();
 	const [file] = profile_picture.files;
@@ -139,3 +140,23 @@ const formatLink = (link) => {
 
 	return `https://www.${link}`;
 };
+
+github_form.addEventListener('submit', async function (e) {
+	e.preventDefault();
+
+	const link = github_link.value;
+	const response = await fetch('/api/users/github', {
+		method: 'POST',
+		body: JSON.stringify({
+			link: link,
+		}),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (response.ok) {
+		window.location.reload();
+		return;
+	}
+});

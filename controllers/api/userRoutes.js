@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { response } = require('express');
 const { uploadProjects, uploadUsers, s3 } = require('../../config');
 const { User } = require('../../models');
 require('dotenv').config();
@@ -102,4 +103,22 @@ router.post(`/image`, uploadUsers.single(`image`), async (req, res, next) => {
 	}
 });
 
+router.post('/github', async (req, res) => {
+	if (!req.body) return res.status(400).json({ message: 'No link sent' });
+
+	const { link } = req.body;
+	try {
+		const userUpdate = await User.update(
+			{ github_username: link },
+			{ where: { id: req.session.user_id } }
+		);
+
+		if (!userUpdate)
+			return res.status(400).json({ message: 'No user found' });
+
+		res.status(200).json(userUpdate);
+	} catch (error) {
+		res.status(400).json(error);
+	}
+});
 module.exports = router;

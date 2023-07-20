@@ -1,11 +1,13 @@
 <div class='row'>
 	<div class='col-auto profile-title'>
-		<img class="profile-image-nav" src="{{profile_image_link}}" alt="">
+		<img class="profile-image-nav" src="{{getProfileImage profile_image_link}}" alt="">
 		<h2>{{name}}</h2>
 	</div>
 </div>
 
 <div class="socials-container">
+	<h4>Github: </h4>
+<a href="{{github_username}}"><img class="social-img-con" src="../images/github.png" alt="" srcset=""></a>
 	<h3 class="social-title">Socials</h3>
 	{{#if socials}}
 		{{#each socials as |social|}}
@@ -29,4 +31,3 @@
 	{{/if}}
 </div>
 
-<script src='./js/profile.js'></script>
