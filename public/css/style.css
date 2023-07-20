@@ -51,9 +51,10 @@ header,
 
 .project-page {
 	position: relative;
-	min-height: 100px;
+	min-height: 100%;
 	margin: 5px;
-	color: #3d0d6f;
+	color: white;
+	background-image: url('/images/project-page-background.jpg');
 	background-size: cover;
 }
 
@@ -157,13 +158,6 @@ footer {
 	text-align: center;
 }
 
-.signup-form input {
-	width: 100%;
-	padding: 8px;
-	margin-bottom: 10px;
-	color: #3d0d6f;
-}
-
 .signup-form button {
 	background-color: white;
 	color: black;
@@ -172,7 +166,8 @@ footer {
 	padding: 8px 12px;
 	font-size: 14px;
 	cursor: pointer;
-	margin-bottom: 30px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 .signup-form button:hover {
@@ -189,7 +184,7 @@ footer {
 	flex-direction: column;
 	align-items: left;
 	width: 100%;
-	min-height: 600px;
+	min-height: 560px;
 }
 
 .profile-border {
@@ -386,12 +381,14 @@ p {
 h2 {
 	display: flex;
 	justify-content: left;
-	margin: 20px;
+	margin-left: 10px
 }
+
 .profile-title {
 	margin: 20px;
 	display: flex;
 	padding: 10px;
+	
 	border-bottom: 2px solid black;
 	box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
 		rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
