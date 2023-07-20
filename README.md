@@ -6,24 +6,20 @@ The challenge of this project was to work collaboratively as a team to create ou
 
 ## Acceptance Criteria
 
-This full stack application satisfies the following code requirements
+This full stack application satisfies the following code requirements:
 
-```
-Application uses a Node and Express back end and uses both GET and POST routes for retrieving and adding new data.
-Application has a folder structure that meets the MVC paradigm and uses Handlebars.js as the template engine.
-Application is backed by a MySQL database with a Sequelize ORM and protects API keys and sensitive information with environment variables.
-Application includes user authentication (express-session and cookies).
-Application uses at least one new library, package, or technology not covered in class.
-```
+- Application uses a Node and Express back end and uses both GET and POST routes for retrieving and adding new data.
+- Application has a folder structure that meets the MVC paradigm and uses Handlebars.js as the template engine.
+- Application is backed by a MySQL database with a Sequelize ORM and protects API keys and sensitive information with environment variables.
+- Application includes user authentication (express-session and cookies).
+- Application uses at least one new library, package, or technology not covered in class.
 
 ## User Story
 
-```
-As a user, I want to be able to sign up for Visual Vault and have my own unique login details.
-As a user, I want to search for another user and be able to view their projects, as well as see the links to their social media profiles that they have chosen to share.
-As a user, I want to share my reaction to a project with the use of emojis.
-As a user, I want to add my own projects and social media accounts to Visual Vault, allowing other users to view my social profiles.
-```
+- As a user, I want to be able to sign up for Visual Vault and have my own unique login details.
+- As a user, I want to search for another user and be able to view their projects, as well as see the links to their social media profiles that they have chosen to share.
+- As a user, I want to share my reaction to a project with the use of emojis.
+- As a user, I want to add my own projects and social media accounts to Visual Vault, allowing other users to view my social profiles.
 
 ## Technologies Used
 
