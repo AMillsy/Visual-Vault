@@ -28,6 +28,7 @@ header,
 	transition: opacity 0.3s ease;
 }
 
+
 .project:hover {
 	opacity: 1;
 }
@@ -37,6 +38,14 @@ header,
 	margin-top: 1%;
 	color: white;
 	font-family: Geneva, Verdana, sans-serif;
+}
+
+.project-name h3 {
+	color: white;
+}
+
+.project-list {
+	color: #3d0d6f;
 }
 
 .project-caption {
@@ -54,7 +63,7 @@ header,
 	min-height: 100%;
 	margin: 5px;
 	color: white;
-	background-image: url('/images/project-page-background.jpg');
+	background-image: url('../images/project-page-background.jpg');
 	background-size: cover;
 }
 
@@ -205,7 +214,7 @@ footer {
 	align-items: center;
 }
 
-.social_containers {
+.social_container {
 	margin: 5px;
 	display: flex;
 	width: 60px;
@@ -246,6 +255,10 @@ footer {
 
 .search-bar button:hover {
 	background-color: #872c97;
+}
+
+#search-user {
+	color: #3d0d6f;
 }
 
 .login {
@@ -411,6 +424,10 @@ label {
 	background-color: black;
 }
 
+.user-card h3 {
+	margin-left: 20px;
+}
+
 p {
 	display: flex;
 	justify-content: left;
@@ -426,8 +443,11 @@ h2 {
 
 .profile-title {
 	margin: 20px;
+	margin-top: 0%;
 	display: flex;
 	padding: 10px;
+	background-color: #553974;
+	color: white;
 
 	border-bottom: 2px solid black;
 	box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
@@ -437,6 +457,10 @@ h2 {
 
 .profile_container {
 	margin: 20px;
+}
+
+.profile_container button {
+	margin-bottom: 20px;
 }
 .profile_link {
 	margin: 20px;
@@ -458,8 +482,20 @@ h2 {
 	display: flex;
 	flex-direction: column;
 }
+
+.socials-container h4 {
+	color: #3d0d6f;
+	margin-bottom: 10px;
+	font-size: 30px;
+}
+
+.socials-container p {
+	color: #3d0d6f;
+}
+
 .social-title {
-	text-decoration: underline;
+	color: #3d0d6f;
+	margin-top: 10px;
 }
 .social-img {
 	width: 100%;
@@ -497,9 +533,13 @@ h2 {
 	margin-top: 10px;
 	width: 40px;
 	height: 40px;
-	background-color: #0088cc;
+	background-color: #3d0d6f;
 	color: white;
 	text-align: center;
+}
+
+.social-btn:hover {
+	background-color: #872c97;
 }
 .social-add {
 	margin-top: 20px;
@@ -517,21 +557,27 @@ h2 {
 .profile-page {
 	display: flex;
 	justify-content: space-between;
+	margin-left: 2%;
+	margin-right: 10%;
+	color: #3d0d6f;
 }
 .project-add {
 	width: 300px;
 	margin: 20px;
 }
+
 .profile-projects {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	margin: 20px;
 }
+
 .delete-project-con {
 	display: flex;
 	justify-content: space-between;
 }
+
 .profile-project-name {
 	padding-right: 20px;
 }
@@ -540,6 +586,13 @@ h2 {
 	display: flex;
 	justify-content: center;
 }
+
+.project-creation-page h3 {
+	color: #3d0d6f;
+	margin-top: 20px;
+}
+
+
 @keyframes fade {
 	from {
 		opacity: 0.4;
