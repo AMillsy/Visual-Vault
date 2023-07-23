@@ -49,6 +49,6 @@ The following technologies were used to create this full stack application:
 - [Adam Mills](https://github.com/AMillsy)
 - [Hasan Malik](https://github.com/Hasan0412)
 - [Lilith Miller-Fermor](https://github.com/poisoned-eden)
-- [Tom Ford](https://github.com/BondT1)
+- [Tom Bond](https://github.com/BondT1)
 
 
