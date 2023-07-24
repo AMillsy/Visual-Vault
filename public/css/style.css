@@ -28,6 +28,10 @@ header,
 	transition: opacity 0.3s ease;
 }
 
+.project_desc {
+	white-space: pre-wrap;
+	padding: 30px;
+}
 .project:hover {
 	opacity: 1;
 }
