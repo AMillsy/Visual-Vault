@@ -119,9 +119,9 @@ module.exports = {
 	},
 
 	formatLink: (link) => {
-		if (link.includes('https://www')) return link;
+		if (link.includes('https://')) return link;
 
-		return `https://www.${link}`;
+		return `https://${link}`;
 	},
 	/**
 	formatGithubLink: (link) => {
