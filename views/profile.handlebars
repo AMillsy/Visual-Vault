@@ -12,13 +12,13 @@
 		<input type="file" name="profile-picture" id="profile-picture">
 		<button type='submit' class='btn btn-primary'>Submit</button>
 	</form>
-
-	<h3>Add Github profile Link</h3>
+	<div id="profile-preview"></div>
+	<h3>Add Your Github Username</h3>
 	<form action="#" id="github-link-form">
-		<input type="text" name="github-profile-link" id="github-profile-link" placeholder="https://github.com/user">
+		<input type="text" name="github-profile-link" id="github-profile-link" placeholder="Username">
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
-	<div id="profile-preview"></div>
+	
 
 	<div class="socials-container">
 	<h3 class="social-title">Socials</h3>
@@ -30,7 +30,7 @@
 	<!-- Creat new social links-->
 		<div id="add-socials">
 		
-			<button class="social-btn social-add">+</button>
+			<button class="btn social-btn social-add">+</button>
 		</div>
 	</div>
 
@@ -38,7 +38,7 @@
 
 <aside class="profile-projects">
 	<h2>Projects:</h2>
-	<button class="social-btn project-add" onclick='href=window.location.replace("create")'>Create Projects</button>
+	<button class="btn social-btn project-add" onclick='href=window.location.replace("create")'>Create Projects</button>
 	{{#if projects.length}}
 	<div class='project-list'>
 		<h3>Current Projects:</h3>
@@ -54,6 +54,10 @@
 							class='btn btn-sm btn-danger'
 							data-id='{{project.id}}'
 						>DELETE</button>
+						<button
+						onclick="window.location.replace('/edit/{{project.id}}')"
+							class='btn btn-sm btn-edit'
+						>Edit</button>
 					</div>
 				</div>
 			{{/each}}

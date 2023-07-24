@@ -28,7 +28,6 @@ header,
 	transition: opacity 0.3s ease;
 }
 
-
 .project:hover {
 	opacity: 1;
 }
@@ -287,7 +286,6 @@ label {
 	color: #3d0d6f;
 	font-weight: 400;
 }
-
 
 /*Test styles*/
 
@@ -592,6 +590,14 @@ h2 {
 	margin-top: 20px;
 }
 
+.btn-edit {
+	color: white;
+	background-color: #1f7a8c;
+}
+
+.btn:hover {
+	cursor: pointer;
+}
 
 @keyframes fade {
 	from {

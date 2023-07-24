@@ -7,6 +7,7 @@ const socials_create_container = document.querySelector('#add-socials');
 const social_container = document.querySelector('.social-title');
 const github_form = document.querySelector('#github-link-form');
 const github_link = document.querySelector('#github-profile-link');
+const profile_projects = document.querySelector('.profile-projects');
 profile_form.addEventListener('submit', async function (e) {
 	e.preventDefault();
 	const [file] = profile_picture.files;
@@ -38,6 +39,28 @@ const delButtonHandler = async (event) => {
 		}
 	}
 };
+
+const editButtonHandler = async (e) => {
+	if (!e.target.hasAttribute(`data-id`)) return;
+	const id = e.target.getAttribute(`data-id`);
+
+	const response = await fetch(`/edit`, {
+		method: `GET`,
+		body: JSON.stringify({ id }),
+		headers: { 'Content-Type': 'application/json' },
+	});
+
+	if (!response.ok) window.location.reload();
+};
+
+profile_projects.addEventListener('click', function (e) {
+	if (e.target.classList.contains('btn-danger')) {
+		delButtonHandler(e);
+		return;
+	} else if (e.target.classList.contains('btn-edit')) {
+		//editButtonHandler(e);
+	}
+});
 profile_picture.onchange = function () {
 	const [file] = profile_picture.files;
 	profile_preview.innerHTML = '';
@@ -143,8 +166,7 @@ const formatLink = (link) => {
 
 github_form.addEventListener('submit', async function (e) {
 	e.preventDefault();
-
-	const link = github_link.value;
+	const link = `https://github.com/${github_link.value}`;
 	const response = await fetch('/api/users/github', {
 		method: 'POST',
 		body: JSON.stringify({

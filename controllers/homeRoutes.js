@@ -209,7 +209,7 @@ router.get(`/recent`, withAuth, async (req, res) => {
 				},
 				{
 					model: User,
-					attributes: ['id', 'name'],
+					attributes: ['id', 'name', 'profile_image_link'],
 				},
 			],
 			limit: 10,
@@ -282,6 +282,21 @@ router.get('/create', withAuth, (req, res) => {
 		profileImage: req.session.profile,
 		userId: req.session.user_id,
 	});
+});
+
+router.get('/edit/:id', withAuth, async (req, res) => {
+	try {
+		const projectData = await Project.findByPk(req.params.id);
+
+		if (!projectData) res.status(400).json({ message: 'No Project found' });
+		const project = projectData.get({ plain: true });
+
+		res.render('editProject', {
+			logged_in: req.session.logged_in,
+			profileImage: req.session.profile,
+			project: project,
+		});
+	} catch (error) {}
 });
 module.exports = router;
 

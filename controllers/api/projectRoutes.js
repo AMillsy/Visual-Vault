@@ -116,4 +116,37 @@ router.get('/:id', async (req, res) => {
 		res.status(400).json(error);
 	}
 });
+
+router.put('/:id', async (req, res) => {
+	const { project_name, caption, description, deployed_link, repo_link } =
+		req.body;
+
+	const deployed = deployed_link || null;
+	const repo = repo_link || null;
+
+	try {
+		const updateProject = await Project.update(
+			{
+				project_name: project_name,
+				caption: caption,
+				description: description,
+				deployed_link: deployed,
+				repo_link: repo,
+				user_id: req.session.user_id,
+			},
+			{ where: { id: req.params.id } }
+		);
+
+		if (!updateProject)
+			return res.status(400).json({ message: 'No project found' });
+
+		const getProject = await Project.findByPk(req.params.id, {
+			plain: true,
+			raw: true,
+		});
+		res.status(200).json(getProject);
+	} catch (error) {
+		res.status(400).json(error);
+	}
+});
 module.exports = router;
