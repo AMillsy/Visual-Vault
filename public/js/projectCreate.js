@@ -17,8 +17,18 @@ const newFormHandler = async (event) => {
 
 	if (!name || !caption || !description) return; //Warning message about needed sections need filling
 
-	const response = await fetch(`/api/projects`, {
-		method: 'POST',
+	let method = '';
+	let fetchCall = '';
+
+	if (event.target.closest('form').hasAttribute('data-id')) {
+		method = 'PUT';
+		fetchCall = `/api/projects/${event.target.closest('form').dataset.id}`;
+	} else {
+		method = 'POST';
+		fetchCall = `/api/projects`;
+	}
+	const response = await fetch(fetchCall, {
+		method: method,
 		body: JSON.stringify({
 			project_name: name,
 			caption: caption,
@@ -52,7 +62,7 @@ const newFormHandler = async (event) => {
 
 	if (!imageResponse.ok) return; //Error message on the screen
 
-	window.location.replace('profile');
+	window.location.replace('/profile');
 };
 
 project_images.onchange = function () {
