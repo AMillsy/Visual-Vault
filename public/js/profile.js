@@ -143,8 +143,7 @@ const formatLink = (link) => {
 
 github_form.addEventListener('submit', async function (e) {
 	e.preventDefault();
-
-	const link = github_link.value;
+	const link = `https://github.com/${github_link.value}`;
 	const response = await fetch('/api/users/github', {
 		method: 'POST',
 		body: JSON.stringify({
