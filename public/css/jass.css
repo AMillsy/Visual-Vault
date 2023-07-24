@@ -422,12 +422,12 @@ button {
 }
 
 a {
-	color: #1b89bc;
+	color: #3d0d6f;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #065b83;
+	color: #872c97;
 	text-decoration: underline;
 }
 
@@ -1011,12 +1011,12 @@ a:hover {
 }
 
 .btn.btn-primary {
-	background-color: #2d3e50;
-	color: #d9e9e8;
+	background-color: #3d0d6f;
+	color: white;
 }
 
 .btn.btn-primary:hover {
-	background-color: #57779a;
+	background-color: #872c97;
 }
 
 .btn.btn-danger {
@@ -1144,11 +1144,11 @@ form .form-label {
 form .form-input {
 	width: 100%;
 	padding: 0.75rem;
-	color: #1a1a1a;
+	color: #3d0d6f;
 	background-color: #ffffff;
 	margin: 0.625rem 0;
 	font-size: 1.2rem;
-	border: 1px solid #484848;
+	border: 1.7px solid #3d0d6f;
 	border-radius: 0.3rem;
 }
 
