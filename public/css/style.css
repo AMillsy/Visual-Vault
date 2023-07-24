@@ -121,7 +121,7 @@ body {
 
 header {
 	background-color: white;
-	height: 200px;
+	min-height: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -261,6 +261,10 @@ footer {
 }
 
 #search-user {
+	color: #3d0d6f;
+}
+
+#search-project {
 	color: #3d0d6f;
 }
 
@@ -616,5 +620,22 @@ h2 {
 	nav button {
 		margin-right: 0;
 		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+	.navigation {
+        order: 2; /* This will make the navigation appear after the logo in the flex layout */
+        margin-top: 10px; 
+	}
+	.profile-page {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 }
