@@ -42,7 +42,7 @@ The following technologies were used to create this full stack application:
 
 [Link to the presentation](https://docs.google.com/presentation/d/137KGkDYiT3ypigCooTHNhyD9G1OZua1PPYlVY8oX69Y/edit?usp=sharing)
 
-[Link to the live URL]()
+[Link to the live URL](https://visual-vault-70f24eab589d.herokuapp.com/)
 
 ## Contributors
 
