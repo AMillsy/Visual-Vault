@@ -47,7 +47,7 @@ const newFormHandler = async (event) => {
 
 	const responseData = await response.json();
 	const { id } = responseData;
-	console.log(`Project id is: `, id);
+
 	const files = project_images.files;
 	const formData = new FormData();
 
@@ -66,7 +66,6 @@ const newFormHandler = async (event) => {
 };
 
 project_images.onchange = function () {
-	console.log('Is this working ');
 	const files = project_images.files;
 	preview_container.innerHTML = '';
 	if (files) {

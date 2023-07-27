@@ -3,7 +3,6 @@ const { Social } = require('../../models');
 
 //ID WILL BE THE USERS ID
 router.post('/', async (req, res) => {
-	console.log('Trying add a new social link');
 	const { social_type, social_other, external_link } = req.body;
 
 	if (!social_type || !external_link)

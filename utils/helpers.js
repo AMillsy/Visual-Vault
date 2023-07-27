@@ -13,7 +13,7 @@ module.exports = {
 		const totalDays = totalHours / 24;
 
 		if (totalDays < 1) return `${Math.floor(totalHours)} hours ago`;
-		console.log(totalHours);
+
 		return projectDate.toLocaleDateString(`en`, {
 			minute: '2-digit',
 			hour: '2-digit',

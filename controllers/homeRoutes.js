@@ -68,7 +68,7 @@ router.get('/project/:id', async (req, res) => {
 			],
 		});
 		const project = projectData.get({ plain: true });
-		console.log(project);
+
 		res.render('project', {
 			project: project,
 			logged_in: req.session.logged_in,
@@ -160,7 +160,7 @@ router.get('/profile/:id', async (req, res) => {
 				},
 			],
 		});
-		console.log(userData);
+
 		if (!userData) {
 			return res
 				.status(400)
@@ -331,7 +331,7 @@ try {
 		{ type: Sequelize.QueryTypes.SELECT }
 	);
 
-	console.log(`I AM HERE`);
+	
 	res.render(`project`, {
 		project: project,
 		reaction: reactionData,

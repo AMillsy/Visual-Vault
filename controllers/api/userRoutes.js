@@ -81,7 +81,6 @@ router.post(`/image`, uploadUsers.single(`image`), async (req, res, next) => {
 					res.status(400).json({
 						message: 'Error removing profile image',
 					});
-				else console.log(data);
 			});
 		}
 

@@ -19,7 +19,7 @@ profile_form.addEventListener('submit', async function (e) {
 		body: formData,
 	});
 
-	if (!response) return console.log(`Error has occured with profile submit`);
+	if (!response) return;
 
 	window.location.reload();
 });
@@ -65,14 +65,12 @@ profile_picture.onchange = function () {
 	const [file] = profile_picture.files;
 	profile_preview.innerHTML = '';
 	if (file) {
-		console.log('We have an image');
 		const url = URL.createObjectURL(file);
 
 		const el = document.createElement('img');
 		el.classList.add('preview-image');
 		el.classList.add('preview-profile');
 		el.src = url;
-		console.log(el);
 		profile_preview.insertAdjacentElement('afterbegin', el);
 	}
 };
@@ -82,7 +80,6 @@ profile_picture.onchange = function () {
 // 	.addEventListener('click', delButtonHandler);
 
 social_btn.addEventListener('click', function (e) {
-	console.log(`Click`);
 	const html = `<div class="social-create-container">
 		<select id="socials" name="socials">
   			<option value="instagram">Instagram</option>
@@ -100,14 +97,10 @@ social_btn.addEventListener('click', function (e) {
 
 socials_create_container.addEventListener('click', async function (e) {
 	if (!e.target.classList.contains('social-create')) return;
-	console.log(e.target);
 	const el = e.target;
 	const container = el.closest('.social-create-container');
 	const socialType = container.children[0].value;
 	const link = container.children[1].value;
-	console.log(container);
-	console.log(socialType);
-	console.log(link);
 
 	const response = await fetch(`/api/socials`, {
 		method: 'POST',
